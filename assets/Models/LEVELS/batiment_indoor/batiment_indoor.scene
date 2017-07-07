@@ -1,0 +1,74 @@
+<scene formatVersion="1.0.1" export_time="1499266323.878409" exported_by="Thonon" previous_export_time="1499266019.7293818" >
+  <nodes >
+    <node name="Area.001" >
+      <position x="0.040345" z="-1.993317" y="7.033486" />
+      <rotation qw="1.000000" qx="0.000000" qy="0.000000" qz="-0.000000" />
+      <scale x="1.000000" z="1.000000" y="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+    </node>
+    <node name="building_indoor" >
+      <position x="-0.222659" z="2.432187" y="-0.072845" />
+      <rotation qw="1.000000" qx="0.000000" qy="0.000000" qz="-0.000000" />
+      <scale x="0.804616" z="1.000000" y="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity lock_trans_z="False" friction_x="1.0" lock_rot_y="False" friction_y="1.0" lock_rot_z="False" anisotropic_friction="False" meshFile="Plane.002.mesh" friction_z="1.0" mass="1.0" damping_rot="0.10000000149011612" mass_radius="1.0" actor="False" physics_type="STATIC" lock_rot_x="False" velocity_max="0.0" lock_trans_x="False" ghost="False" velocity_min="0.0" inertia_tensor="0.4000000059604645" lock_trans_y="False" damping_trans="0.03999999910593033" name="Plane.002" />
+    </node>
+    <node name="Area" >
+      <position x="7.240323" z="-4.687435" y="5.434064" />
+      <rotation qw="1.000000" qx="0.000000" qy="0.000000" qz="-0.000000" />
+      <scale x="1.000000" z="1.000000" y="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+    </node>
+    <node name="Lamp" >
+      <position x="12.391156" z="-1.005454" y="5.903862" />
+      <rotation qw="0.518151" qx="0.337795" qy="0.599479" qz="-0.507975" />
+      <scale x="1.000000" z="1.000000" y="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <light shadow="true" name="Lamp" powerScale="1.0" type="directional" >
+        <position x="12.391156" z="-1.005454" y="5.903862" />
+        <lightAttenuation quadratic="0.0" constant="1.0" linear="0.03333335240683057" range="5000" />
+        <direction x="0.121" z="0.959" y="-0.256" />
+        <colourDiffuse b="1.0" r="1.0" g="1.0" />
+        <colourSpecular b="1.0" r="1.0" g="1.0" />
+        <colourShadow b="1.0" r="1.0" g="1.0" />
+      </light>
+    </node>
+    <node name="Camera" >
+      <position x="7.481132" z="6.507640" y="5.343665" />
+      <rotation qw="0.780483" qx="0.483536" qy="0.336872" qz="-0.208704" />
+      <scale x="1.000000" z="1.000000" y="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <camera fov="0.5033799435163735" projectionType="perspective" name="Camera" >
+        <clipping farPlaneDist="100.0" near="0.10000000149011612" nearPlaneDist="0.10000000149011612" far="100.0" />
+      </camera>
+    </node>
+  </nodes>
+  <externals >
+    <item type="material" >
+      <file name="C:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\LEVELS\batiment_indoor\buildingIndoorWalls.material" />
+    </item>
+    <item type="material" >
+      <file name="C:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\LEVELS\batiment_indoor\buildingIndoorGround.material" />
+    </item>
+  </externals>
+  <environment >
+    <colourAmbient b="0.0" r="0.0" g="0.0" />
+    <colourBackground b="0.05087608844041824" r="0.05087608844041824" g="0.05087608844041824" />
+    <colourDiffuse b="0.05087608844041824" r="0.05087608844041824" g="0.05087608844041824" />
+  </environment>
+</scene>
