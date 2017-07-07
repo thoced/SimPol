@@ -43,7 +43,7 @@ public class CibleCtrl extends AbstractControl {
 
     public void setType(Type type)
     {
-         if(this.type == Type.NULL)
+         if(type == Type.NULL || this.type == Type.NULL)
              posEndArmed = this.getSpatial().getWorldTranslation().add(vectorArmed);
         
         this.type = type;
