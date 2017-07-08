@@ -127,8 +127,7 @@ public class CibleCtrl extends AbstractControl {
             init = false;
         }
         
-       System.out.println("posStartArmed:" + posStartArmed);  
-        
+            
        if(type == Type.POSITIVE)
        {
           // déplacement de la cible vers la position posEndArmed
