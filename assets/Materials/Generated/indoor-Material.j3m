@@ -1,27 +1,18 @@
 Material MyMaterial : Common/MatDefs/Light/Lighting.j3md {
     MaterialParameters {
         Diffuse : 0.64000005 0.64000005 0.64000005 1.0
-        SeparateTexCoord : true
-        BackfaceShadows : false
-        DiffuseMap : Repeat Models/LEVEL02/indoor/TexturesCom_MarbleFloorTiles1_1024_diffuse.png
-        Shininess : 12.5
         UseMaterialColors : false
         ParallaxHeight : 0.05
         Ambient : 0.8 0.8 0.8 1.0
+        SeparateTexCoord : true
         GlowColor : 0.0 0.0 0.0 1.0
-        Specular : 0.5 0.5 0.5 1.0
-        LightMap : Models/LEVEL02/indoor/lightAtlasPack.png
+        BackfaceShadows : false
         NormalMap : Repeat Models/LEVEL02/indoor/TexturesCom_MarbleFloorTiles1_1024_normal.png
-       }
+        DiffuseMap : Repeat Models/LEVEL02/indoor/TexturesCom_MarbleFloorTiles1_1024_diffuse.png
+        LightMap : Models/LEVEL02/indoor/lightAtlasPack.png
+        Specular : 0.5 0.5 0.5 1.0
+        Shininess : 12.5
+    }
     AdditionalRenderState {
-      PointSprite On
-      FaceCull Back
-      AlphaTestFalloff 0.0
-      DepthWrite On
-      ColorWrite On
-      PolyOffset 0.0 0.0
-      DepthTest On
-      Blend Off
-      Wireframe Off
     }
 }
