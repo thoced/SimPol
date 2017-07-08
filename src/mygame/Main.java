@@ -53,6 +53,7 @@ import com.jme3.system.AppSettings;
 import java.util.List;
 
 import edu.ufl.digitalworlds.j4k.*;
+import mygame.AppStates.TriggerState;
 import mygame.Ctrl.CibleCtrl;
 
 
@@ -182,40 +183,14 @@ public class Main extends SimpleApplication implements RawInputListener  {
         player.setPhysicsLocation(new Vector3f(-0,5, 1));
         player.setApplyPhysicsLocal(true);
         
-        
+        // ajout du sceneModel
         this.rootNode.attachChild(sceneModel);
-
         bulletAppState.getPhysicsSpace().add(player);
         
-     /*   Spatial dyn = (Spatial) ((Node)sceneModel).getChild("dynamicrock");
-        PhysicsControl phy = dyn.getControl(PhysicsControl.class);
-       bulletAppState.getPhysicsSpace().add(dyn);*/
-        
-        
-        // init NavMesh
-         Node n = (Node)sceneModel;
-        this.setNavMesh(n);
-        // init agent
-       //  this.setAgent();
-       
-     // attachement du control aggent au monstre
-     Spatial monster = ((Node)sceneModel).getChild("monster");
-     if(monster != null)
-     {
-         agent = new AgentCtrl(navMesh);
-         // attachement de l'agent
-         monster.addControl(agent);
-         // creatin d'une capsule
-          CapsuleCollisionShape capsuleMonster = new CapsuleCollisionShape(0.4f, 1.4f, 1);
-          CharacterControl monsterControl = new CharacterControl(capsuleMonster,0.05f);
-          monsterControl.setGravity(30);
-          monsterControl.setUpAxis(1);
-          monster.addControl(monsterControl);
-          bulletAppState.getPhysicsSpace().add(monsterControl);
-          
-         
-     }
-      
+        // création des appState
+        TriggerState ts = new TriggerState();
+        this.getStateManager().attach(ts);
+     
      
     }
 
@@ -223,12 +198,13 @@ public class Main extends SimpleApplication implements RawInputListener  {
     public void simpleUpdate(float tpf) 
     {
       
-        
+        // calcul des axes de la caméra
         camDir.set(cam.getDirection()).multLocal(POVY);
         camLeft.set(cam.getLeft()).multLocal(POVX);
         walkDirection.set(0, 0, 0);
         camAxe.set(0,0,0);
         
+        // mise à jour du vecgteur walkDirection
         walkDirection.addLocal(camLeft);
         walkDirection.addLocal(camDir);
          // modif axes
@@ -245,7 +221,7 @@ public class Main extends SimpleApplication implements RawInputListener  {
         q.lookAt(cam.getDirection(), Vector3f.UNIT_Y);
         cam.setRotation(q);
            
-       
+       // update
         player.update(tpf);
         
        
@@ -481,7 +457,6 @@ public class Main extends SimpleApplication implements RawInputListener  {
                 CibleCtrl ctrl = cible.getControl(CibleCtrl.class);
                 if(ctrl != null)
                 {
-                  
                     ctrl.setType(CibleCtrl.Type.POSITIVE);
                 }
             }
@@ -505,9 +480,7 @@ public class Main extends SimpleApplication implements RawInputListener  {
            }
            
        }
-       
-   
-       
+  
      System.out.println(evt.getButton().getLogicalId());
     }
 
