@@ -29,11 +29,13 @@ public class CibleCtrl extends AbstractControl {
     
     private boolean init = true;
     
+    private boolean oneShot = false; // si le controleur ne fonctionne qu'une fois
+    
+    private boolean onceActived = false; // si l'activation a déja eu lieu une fois
+    
     public enum Type {POSITIVE,NEGATIVE,NULL};
     
     private Type type = Type.NULL;
-    
-    private boolean armed = false;
     
     private float speed = 1f;
 
@@ -104,19 +106,15 @@ public class CibleCtrl extends AbstractControl {
       
     }
 
-    public boolean isArmed() {
-        return armed;
+    public boolean isOneShot() {
+        return oneShot;
     }
 
-    public void setArmed(boolean armed) {
-        this.armed = armed;
-        
-      
-        
+    public void setOneShot(boolean oneShot) {
+        this.oneShot = oneShot;
     }
-      
-    
-    
+ 
+        
     @Override
     protected void controlUpdate(float tpf) 
     {
@@ -126,10 +124,14 @@ public class CibleCtrl extends AbstractControl {
             posStartArmed = this.getSpatial().getWorldTranslation().clone();
             init = false;
         }
+       
+        if(onceActived && this.isOneShot())
+            return;
         
             
        if(type == Type.POSITIVE)
        {
+          
           // déplacement de la cible vers la position posEndArmed
           // reception de la position actuel
            Vector3f currentPos = this.getSpatial().getWorldTranslation();
@@ -157,6 +159,11 @@ public class CibleCtrl extends AbstractControl {
                   diff.normalizeLocal();
                   this.getSpatial().setLocalTranslation(currentPos.add(diff.mult(tpf * speed)));
              }
+             else
+             {
+                  // l'activation à lieu une fois
+                     onceActived = true;
+             }
             
        }
        
@@ -171,9 +178,9 @@ public class CibleCtrl extends AbstractControl {
     public Control cloneForSpatial(Spatial spatial) {
         CibleCtrl control = new CibleCtrl();
         control.setVectorArmed(this.getVectorArmed());
-        control.setArmed(this.isArmed());
         control.setSpeed(this.getSpeed());
         control.setType(this.getType());
+        control.setOneShot(this.isOneShot());
         //TODO: copy parameters to new Control
         return control;
     }
@@ -182,11 +189,11 @@ public class CibleCtrl extends AbstractControl {
     public void read(JmeImporter im) throws IOException {
         super.read(im);
         InputCapsule in = im.getCapsule(this);
-        this.setArmed(in.readBoolean("armed", false));
         this.setSpeed(in.readFloat("speed", 1f));
         Vector3f temp = new Vector3f();
         this.setVectorArmed((Vector3f)in.readSavable("VECTOR", new Vector3f(0,0,0f)));
         this.setType(in.readEnum("type", Type.class, Type.NULL));
+        this.setOneShot(in.readBoolean("oneshot", false));
        // this.setVectorArmed(temp);
         //TODO: load properties of this Control, e.g.
         //this.value = in.readFloat("name", defaultValue);
@@ -196,10 +203,10 @@ public class CibleCtrl extends AbstractControl {
     public void write(JmeExporter ex) throws IOException {
         super.write(ex);
         OutputCapsule out = ex.getCapsule(this);
-        out.write(armed, "armed", false);
         out.write(speed, "speed", 1f);
         out.write(vectorArmed, "VECTOR", new Vector3f());
         out.write(type, "type", Type.NULL);
+        out.write(this.oneShot, "oneshot", false);
         
         
         //TODO: save properties of this Control, e.g.

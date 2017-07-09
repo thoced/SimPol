@@ -1,18 +1,38 @@
-<scene formatVersion="1.0.1" export_time="1499433381.9187307" previous_export_time="1499433281.6855707" exported_by="Thonon" >
+<scene formatVersion="1.0.1" previous_export_time="1499585248.7918673" export_time="1499598100.5540662" exported_by="Thonon" >
   <nodes >
+    <node name="Box02" >
+      <position z="-10.025337" x="-7.504521" y="0.850459" />
+      <rotation qx="0.000000" qz="-0.000000" qy="0.000000" qw="1.000000" />
+      <scale z="0.470826" x="0.470826" y="0.850459" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity lock_trans_z="False" lock_trans_x="False" mass="1.0" damping_trans="0.03999999910593033" velocity_max="0.0" lock_rot_x="False" physics_type="STATIC" lock_rot_z="False" friction_y="1.0" anisotropic_friction="False" damping_rot="0.10000000149011612" friction_z="1.0" inertia_tensor="0.4000000059604645" lock_rot_y="False" velocity_min="0.0" meshFile="Cube.005.mesh" friction_x="1.0" actor="False" name="Cube.005" ghost="False" mass_radius="1.0" lock_trans_y="False" />
+    </node>
+    <node name="Box01" >
+      <position z="-9.829389" x="-6.441527" y="0.470826" />
+      <rotation qx="0.000000" qz="-0.000000" qy="0.000000" qw="1.000000" />
+      <scale z="0.470826" x="0.470826" y="0.470826" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity lock_trans_z="False" lock_trans_x="False" mass="1.0" damping_trans="0.03999999910593033" velocity_max="0.0" lock_rot_x="False" physics_type="STATIC" lock_rot_z="False" friction_y="1.0" anisotropic_friction="False" damping_rot="0.10000000149011612" friction_z="1.0" inertia_tensor="0.4000000059604645" lock_rot_y="False" velocity_min="0.0" meshFile="Cube.004.mesh" friction_x="1.0" actor="False" name="Cube.004" ghost="False" mass_radius="1.0" lock_trans_y="False" />
+    </node>
     <node name="floorParquet" >
       <position z="-0.000000" x="0.000000" y="0.000000" />
-      <rotation qw="1.000000" qy="0.000000" qx="0.000000" qz="-0.000000" />
+      <rotation qx="0.000000" qz="-0.000000" qy="0.000000" qw="1.000000" />
       <scale z="1.000000" x="1.000000" y="1.000000" />
       <game >
         <sensors />
         <actuators />
       </game>
-      <entity mass="1.0" velocity_max="0.0" lock_trans_y="False" meshFile="Plane.001.mesh" velocity_min="0.0" damping_rot="0.10000000149011612" lock_rot_x="False" damping_trans="0.03999999910593033" friction_x="1.0" lock_rot_y="False" lock_rot_z="False" name="Plane.001" actor="False" friction_y="1.0" anisotropic_friction="False" friction_z="1.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" ghost="False" inertia_tensor="0.4000000059604645" mass_radius="1.0" />
+      <entity lock_trans_z="False" lock_trans_x="False" mass="1.0" damping_trans="0.03999999910593033" velocity_max="0.0" lock_rot_x="False" physics_type="STATIC" lock_rot_z="False" friction_y="1.0" anisotropic_friction="False" damping_rot="0.10000000149011612" friction_z="1.0" inertia_tensor="0.4000000059604645" lock_rot_y="False" velocity_min="0.0" meshFile="Plane.001.mesh" friction_x="1.0" actor="False" name="Plane.001" ghost="False" mass_radius="1.0" lock_trans_y="False" />
     </node>
     <node name="Point.004" >
       <position z="-1.958656" x="-8.582413" y="1.671365" />
-      <rotation qw="1.000000" qy="0.000000" qx="0.000000" qz="-0.000000" />
+      <rotation qx="0.000000" qz="-0.000000" qy="0.000000" qw="1.000000" />
       <scale z="1.000000" x="1.000000" y="1.000000" />
       <game >
         <sensors />
@@ -20,14 +40,14 @@
       </game>
       <light name="Point.004" shadow="true" type="point" powerScale="1.0" >
         <position z="-1.958656" x="-8.582413" y="1.671365" />
-        <lightAttenuation range="5000" constant="1.0" linear="0.04" quadratic="0.0" />
-        <colourDiffuse g="0.5647115707397461" r="0.5271152257919312" b="0.7011020183563232" />
-        <colourShadow g="0.5647115707397461" r="0.5271152257919312" b="0.7011020183563232" />
+        <lightAttenuation range="5000" quadratic="0.0" constant="1.0" linear="0.04" />
+        <colourDiffuse r="0.5271152257919312" b="0.7011020183563232" g="0.5647115707397461" />
+        <colourShadow r="0.5271152257919312" b="0.7011020183563232" g="0.5647115707397461" />
       </light>
     </node>
     <node name="Point.003" >
       <position z="-11.603181" x="17.608143" y="1.941927" />
-      <rotation qw="1.000000" qy="0.000000" qx="0.000000" qz="-0.000000" />
+      <rotation qx="0.000000" qz="-0.000000" qy="0.000000" qw="1.000000" />
       <scale z="1.000000" x="1.000000" y="1.000000" />
       <game >
         <sensors />
@@ -35,14 +55,14 @@
       </game>
       <light name="Point.003" shadow="true" type="point" powerScale="1.0" >
         <position z="-11.603181" x="17.608143" y="1.941927" />
-        <lightAttenuation range="5000" constant="1.0" linear="0.04" quadratic="0.0" />
-        <colourDiffuse g="0.23226453363895416" r="1.0" b="0.22009418904781342" />
-        <colourShadow g="0.23226453363895416" r="1.0" b="0.22009418904781342" />
+        <lightAttenuation range="5000" quadratic="0.0" constant="1.0" linear="0.04" />
+        <colourDiffuse r="1.0" b="0.22009418904781342" g="0.23226453363895416" />
+        <colourShadow r="1.0" b="0.22009418904781342" g="0.23226453363895416" />
       </light>
     </node>
     <node name="Point.002" >
       <position z="-6.673611" x="0.137796" y="6.540805" />
-      <rotation qw="1.000000" qy="0.000000" qx="0.000000" qz="-0.000000" />
+      <rotation qx="0.000000" qz="-0.000000" qy="0.000000" qw="1.000000" />
       <scale z="1.000000" x="1.000000" y="1.000000" />
       <game >
         <sensors />
@@ -51,7 +71,7 @@
     </node>
     <node name="Point.001" >
       <position z="-11.298410" x="12.252891" y="1.941927" />
-      <rotation qw="1.000000" qy="0.000000" qx="0.000000" qz="-0.000000" />
+      <rotation qx="0.000000" qz="-0.000000" qy="0.000000" qw="1.000000" />
       <scale z="1.000000" x="1.000000" y="1.000000" />
       <game >
         <sensors />
@@ -59,14 +79,14 @@
       </game>
       <light name="Point.001" shadow="true" type="point" powerScale="1.0" >
         <position z="-11.298410" x="12.252891" y="1.941927" />
-        <lightAttenuation range="5000" constant="1.0" linear="0.04" quadratic="0.0" />
-        <colourDiffuse g="1.0" r="0.9654097557067871" b="0.4944230318069458" />
-        <colourShadow g="1.0" r="0.9654097557067871" b="0.4944230318069458" />
+        <lightAttenuation range="5000" quadratic="0.0" constant="1.0" linear="0.04" />
+        <colourDiffuse r="0.9654097557067871" b="0.4944230318069458" g="1.0" />
+        <colourShadow r="0.9654097557067871" b="0.4944230318069458" g="1.0" />
       </light>
     </node>
     <node name="Point" >
       <position z="-0.878818" x="0.390377" y="1.604806" />
-      <rotation qw="1.000000" qy="0.000000" qx="0.000000" qz="-0.000000" />
+      <rotation qx="0.000000" qz="-0.000000" qy="0.000000" qw="1.000000" />
       <scale z="1.000000" x="1.000000" y="1.000000" />
       <game >
         <sensors />
@@ -74,45 +94,48 @@
       </game>
       <light name="Point" shadow="true" type="point" powerScale="1.0" >
         <position z="-0.878818" x="0.390377" y="1.604806" />
-        <lightAttenuation range="5000" constant="1.0" linear="0.04" quadratic="0.0" />
-        <colourDiffuse g="0.7139747142791748" r="0.5898993015289307" b="1.0" />
-        <colourShadow g="0.7139747142791748" r="0.5898993015289307" b="1.0" />
+        <lightAttenuation range="5000" quadratic="0.0" constant="1.0" linear="0.04" />
+        <colourDiffuse r="0.5898993015289307" b="1.0" g="0.7139747142791748" />
+        <colourShadow r="0.5898993015289307" b="1.0" g="0.7139747142791748" />
       </light>
     </node>
     <node name="escalier01" >
       <position z="-8.399229" x="-11.722589" y="0.100000" />
-      <rotation qw="1.000000" qy="0.000000" qx="0.000000" qz="-0.000000" />
+      <rotation qx="0.000000" qz="-0.000000" qy="0.000000" qw="1.000000" />
       <scale z="1.000000" x="1.000000" y="1.000000" />
       <game >
         <sensors />
         <actuators />
       </game>
-      <entity mass="1.0" velocity_max="0.0" lock_trans_y="False" meshFile="Cube.001.mesh" velocity_min="0.0" damping_rot="0.10000000149011612" lock_rot_x="False" damping_trans="0.03999999910593033" friction_x="1.0" lock_rot_y="False" lock_rot_z="False" name="Cube.001" actor="False" friction_y="1.0" anisotropic_friction="False" friction_z="1.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" ghost="False" inertia_tensor="0.4000000059604645" mass_radius="1.0" />
+      <entity lock_trans_z="False" lock_trans_x="False" mass="1.0" damping_trans="0.03999999910593033" velocity_max="0.0" lock_rot_x="False" physics_type="STATIC" lock_rot_z="False" friction_y="1.0" anisotropic_friction="False" damping_rot="0.10000000149011612" friction_z="1.0" inertia_tensor="0.4000000059604645" lock_rot_y="False" velocity_min="0.0" meshFile="Cube.001.mesh" friction_x="1.0" actor="False" name="Cube.001" ghost="False" mass_radius="1.0" lock_trans_y="False" />
     </node>
     <node name="static" >
       <position z="-0.000000" x="0.000000" y="0.000000" />
-      <rotation qw="1.000000" qy="0.000000" qx="0.000000" qz="-0.000000" />
+      <rotation qx="0.000000" qz="-0.000000" qy="0.000000" qw="1.000000" />
       <scale z="1.000000" x="1.000000" y="1.000000" />
       <game >
         <sensors />
         <actuators />
       </game>
-      <entity mass="1.0" velocity_max="0.0" lock_trans_y="False" meshFile="Plane.mesh" velocity_min="0.0" damping_rot="0.10000000149011612" lock_rot_x="False" damping_trans="0.03999999910593033" friction_x="1.0" lock_rot_y="False" lock_rot_z="False" name="Plane" actor="False" friction_y="1.0" anisotropic_friction="False" friction_z="1.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" ghost="False" inertia_tensor="0.4000000059604645" mass_radius="1.0" />
+      <entity lock_trans_z="False" lock_trans_x="False" mass="1.0" damping_trans="0.03999999910593033" velocity_max="0.0" lock_rot_x="False" physics_type="STATIC" lock_rot_z="False" friction_y="1.0" anisotropic_friction="False" damping_rot="0.10000000149011612" friction_z="1.0" inertia_tensor="0.4000000059604645" lock_rot_y="False" velocity_min="0.0" meshFile="Plane.mesh" friction_x="1.0" actor="False" name="Plane" ghost="False" mass_radius="1.0" lock_trans_y="False" />
     </node>
     <node name="Camera" >
       <position z="6.507640" x="7.481132" y="5.343665" />
-      <rotation qw="0.780483" qy="0.336872" qx="0.483536" qz="-0.208704" />
+      <rotation qx="0.483536" qz="-0.208704" qy="0.336872" qw="0.780483" />
       <scale z="1.000000" x="1.000000" y="1.000000" />
       <game >
         <sensors />
         <actuators />
       </game>
-      <camera fov="0.5033799435163735" name="Camera" projectionType="perspective" >
-        <clipping farPlaneDist="100.0" near="0.10000000149011612" nearPlaneDist="0.10000000149011612" far="100.0" />
+      <camera name="Camera" projectionType="perspective" fov="0.5033799435163735" >
+        <clipping far="100.0" near="0.10000000149011612" nearPlaneDist="0.10000000149011612" farPlaneDist="100.0" />
       </camera>
     </node>
   </nodes>
   <externals >
+    <item type="material" >
+      <file name="C:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\LEVEL02\indoor\boxMat.material" />
+    </item>
     <item type="material" >
       <file name="C:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\LEVEL02\indoor\floorParquetMat.material" />
     </item>
@@ -124,8 +147,8 @@
     </item>
   </externals>
   <environment >
-    <colourDiffuse g="0.05087608844041824" r="0.05087608844041824" b="0.05087608844041824" />
-    <colourBackground g="0.05087608844041824" r="0.05087608844041824" b="0.05087608844041824" />
-    <colourAmbient g="0.0" r="0.0" b="0.0" />
+    <colourDiffuse r="0.05087608844041824" b="0.05087608844041824" g="0.05087608844041824" />
+    <colourAmbient r="0.0" b="0.0" g="0.0" />
+    <colourBackground r="0.05087608844041824" b="0.05087608844041824" g="0.05087608844041824" />
   </environment>
 </scene>

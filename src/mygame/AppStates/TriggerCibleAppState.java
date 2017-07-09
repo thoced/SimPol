@@ -28,9 +28,9 @@ public class TriggerCibleAppState extends AbstractAppState {
     
     private Camera cam;
     
+    // liste des TriggerCible
     private List<TriggerCible>  listTrigger = new ArrayList<TriggerCible>();
-    
-    
+      
     public void getTrigger(Node n)
     {
 

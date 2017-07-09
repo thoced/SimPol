@@ -11,6 +11,7 @@ import com.jme3.bullet.BulletAppState;
 import com.jme3.bullet.collision.shapes.CapsuleCollisionShape;
 import com.jme3.bullet.collision.shapes.CollisionShape;
 import com.jme3.bullet.collision.shapes.CylinderCollisionShape;
+import com.jme3.bullet.control.BetterCharacterControl;
 import com.jme3.bullet.control.CharacterControl;
 import com.jme3.bullet.control.GhostControl;
 import com.jme3.bullet.control.PhysicsControl;
@@ -53,7 +54,8 @@ import com.jme3.system.AppSettings;
 import java.util.List;
 
 import edu.ufl.digitalworlds.j4k.*;
-import mygame.AppStates.TriggerState;
+import mygame.AppStates.DynamicAppState;
+import mygame.AppStates.TriggerCibleAppState;
 import mygame.Ctrl.CibleCtrl;
 
 
@@ -68,7 +70,9 @@ public class Main extends SimpleApplication implements RawInputListener  {
   private BulletAppState bulletAppState;
   private RigidBodyControl landscape;
   private RigidBodyControl landscape2;
-  private CharacterControl player;
+  //private CharacterControl player;
+  private BetterCharacterControl player;
+  private Node                   playerNode;
   private Vector3f walkDirection = new Vector3f();
   private boolean left = false, right = false, up = false, down = false,sLeft = false,sRight = false;
   private boolean isCrounch = false;
@@ -120,6 +124,8 @@ public class Main extends SimpleApplication implements RawInputListener  {
         this.getFlyByCamera().setMoveSpeed(6f);
         this.getFlyByCamera().setRotationSpeed(0.8f);
         
+       
+        
         this.setUpJoys();
         this.setUpKeys();
         
@@ -137,7 +143,7 @@ public class Main extends SimpleApplication implements RawInputListener  {
         // creation de la physique
         bulletAppState = new BulletAppState();
         this.stateManager.attach(bulletAppState);
-        
+       
         try
         {
         // creation de la physique de la scene
@@ -169,28 +175,41 @@ public class Main extends SimpleApplication implements RawInputListener  {
         {
             
         }
-         
-     
        
         // physique du personnage
         capsuleDebout = new CapsuleCollisionShape(1f, 1.8f, 1);
         capsuleAccroupi = new CapsuleCollisionShape(1.5f,3f,1);
         
-        player = new CharacterControl(capsuleDebout, 0.05f);
+       /* player = new CharacterControl(capsuleDebout, 0.05f);
         player.setJumpSpeed(28);
         player.setFallSpeed(30);
         player.setGravity(30);
         player.setPhysicsLocation(new Vector3f(-0,5, 1));
-        player.setApplyPhysicsLocal(true);
+        player.setApplyPhysicsLocal(false);
+        player.setCollisionGroup(1);*/
+        
+        player =  new BetterCharacterControl(1f,2f,1f);
+        player.setJumpForce(new Vector3f(0,28,0));
+        player.setGravity(new Vector3f(0,-100,0));
+        
+        playerNode = new Node();
+        playerNode.setLocalTranslation(0, 4, -5);
+        playerNode.addControl(player);
+        bulletAppState.getPhysicsSpace().add(player);
+        bulletAppState.getPhysicsSpace().add(playerNode);
+       
+       
+        
         
         // ajout du sceneModel
         this.rootNode.attachChild(sceneModel);
-        bulletAppState.getPhysicsSpace().add(player);
+      //  bulletAppState.getPhysicsSpace().add(player);
         
         // création des appState
-        TriggerState ts = new TriggerState();
-        this.getStateManager().attach(ts);
+        this.getStateManager().attach(new TriggerCibleAppState());
+        this.getStateManager().attach(new DynamicAppState());
      
+      
      
     }
 
@@ -199,11 +218,12 @@ public class Main extends SimpleApplication implements RawInputListener  {
     {
       
         // calcul des axes de la caméra
-        camDir.set(cam.getDirection()).multLocal(POVY);
-        camLeft.set(cam.getLeft()).multLocal(POVX);
+        camDir.set(cam.getDirection()).multLocal(POVY*4);
+        camLeft.set(cam.getLeft()).multLocal(POVX*4);
         walkDirection.set(0, 0, 0);
         camAxe.set(0,0,0);
         
+        camDir.y = 0;
         // mise à jour du vecgteur walkDirection
         walkDirection.addLocal(camLeft);
         walkDirection.addLocal(camDir);
@@ -213,7 +233,8 @@ public class Main extends SimpleApplication implements RawInputListener  {
         player.setWalkDirection(walkDirection);
         
         // mise à jour de la positino de la camera
-        cam.setLocation(player.getPhysicsLocation().add(new Vector3f(0,0.7f,0)));
+        //cam.setLocation(player.getPhysicsLocation().add(new Vector3f(0,0.7f,0)));
+        cam.setLocation(playerNode.getLocalTranslation().add(new Vector3f(0,2f,0)));
         // mise à jour de la direction de la caméra
         Quaternion q = cam.getRotation();
         QuatCam.fromAngles(LOOKX,LOOKY, 0f);
@@ -429,10 +450,10 @@ public class Main extends SimpleApplication implements RawInputListener  {
     {
        JoystickAxis axis = evt.getAxis();
        if(axis.getLogicalId() == JoystickAxis.X_AXIS)       
-            POVX = (-evt.getValue()) / 8f;
+            POVX = (-evt.getValue()) ;
        
        if(axis.getLogicalId() == JoystickAxis.Y_AXIS)
-           POVY = (-evt.getValue()) / 8f;
+           POVY = (-evt.getValue()) ;
             
        if(axis.getLogicalId() == JoystickAxis.Z_AXIS)
            LOOKY = -evt.getValue() / 8f;
