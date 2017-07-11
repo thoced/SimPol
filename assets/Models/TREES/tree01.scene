@@ -1,0 +1,103 @@
+<scene export_time="1499786071.3031774" exported_by="Thonon" previous_export_time="1499784546.0346372" formatVersion="1.0.1" >
+  <nodes >
+    <node name="tree.004" >
+      <position x="-1.785462" z="-13.124567" y="0.000000" />
+      <rotation qy="0.000000" qx="0.000000" qw="1.000000" qz="-0.000000" />
+      <scale x="0.324574" z="0.324574" y="0.243603" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity friction_x="1.0" damping_rot="0.10000000149011612" velocity_min="0.0" mass="1.0" friction_z="1.0" ghost="False" physics_type="STATIC" inertia_tensor="0.4000000059604645" mass_radius="1.0" lock_rot_z="False" name="Mesh.004" velocity_max="0.0" actor="False" damping_trans="0.03999999910593033" lock_trans_y="False" friction_y="1.0" lock_rot_x="False" anisotropic_friction="False" lock_trans_x="False" lock_rot_y="False" meshFile="Mesh.004.mesh" lock_trans_z="False" />
+    </node>
+    <node name="tree.003" >
+      <position x="4.371590" z="-12.452293" y="0.000000" />
+      <rotation qy="0.000000" qx="0.000000" qw="1.000000" qz="-0.000000" />
+      <scale x="0.324574" z="0.324574" y="0.243603" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity friction_x="1.0" damping_rot="0.10000000149011612" velocity_min="0.0" mass="1.0" friction_z="1.0" ghost="False" physics_type="STATIC" inertia_tensor="0.4000000059604645" mass_radius="1.0" lock_rot_z="False" name="Mesh.003" velocity_max="0.0" actor="False" damping_trans="0.03999999910593033" lock_trans_y="False" friction_y="1.0" lock_rot_x="False" anisotropic_friction="False" lock_trans_x="False" lock_rot_y="False" meshFile="Mesh.003.mesh" lock_trans_z="False" />
+    </node>
+    <node name="tree.002" >
+      <position x="8.998015" z="-11.747575" y="0.000000" />
+      <rotation qy="0.000000" qx="0.000000" qw="1.000000" qz="-0.000000" />
+      <scale x="0.324574" z="0.324574" y="0.243603" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity friction_x="1.0" damping_rot="0.10000000149011612" velocity_min="0.0" mass="1.0" friction_z="1.0" ghost="False" physics_type="STATIC" inertia_tensor="0.4000000059604645" mass_radius="1.0" lock_rot_z="False" name="Mesh.002" velocity_max="0.0" actor="False" damping_trans="0.03999999910593033" lock_trans_y="False" friction_y="1.0" lock_rot_x="False" anisotropic_friction="False" lock_trans_x="False" lock_rot_y="False" meshFile="Mesh.002.mesh" lock_trans_z="False" />
+    </node>
+    <node name="tree.001" >
+      <position x="2.901134" z="-9.751626" y="0.000000" />
+      <rotation qy="0.000000" qx="0.000000" qw="1.000000" qz="-0.000000" />
+      <scale x="0.324574" z="0.324574" y="0.243603" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity friction_x="1.0" damping_rot="0.10000000149011612" velocity_min="0.0" mass="1.0" friction_z="1.0" ghost="False" physics_type="STATIC" inertia_tensor="0.4000000059604645" mass_radius="1.0" lock_rot_z="False" name="Mesh.001" velocity_max="0.0" actor="False" damping_trans="0.03999999910593033" lock_trans_y="False" friction_y="1.0" lock_rot_x="False" anisotropic_friction="False" lock_trans_x="False" lock_rot_y="False" meshFile="Mesh.001.mesh" lock_trans_z="False" />
+    </node>
+    <node name="tree" >
+      <position x="-1.402876" z="-8.127705" y="0.000000" />
+      <rotation qy="0.000000" qx="0.000000" qw="1.000000" qz="-0.000000" />
+      <scale x="0.324574" z="0.324574" y="0.243603" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity friction_x="1.0" damping_rot="0.10000000149011612" velocity_min="0.0" mass="1.0" friction_z="1.0" ghost="False" physics_type="STATIC" inertia_tensor="0.4000000059604645" mass_radius="1.0" lock_rot_z="False" name="Mesh" velocity_max="0.0" actor="False" damping_trans="0.03999999910593033" lock_trans_y="False" friction_y="1.0" lock_rot_x="False" anisotropic_friction="False" lock_trans_x="False" lock_rot_y="False" meshFile="Mesh.mesh" lock_trans_z="False" />
+      <node name="leaves" >
+        <position x="-1.402876" z="-8.127705" y="0.000000" />
+        <rotation qy="0.000000" qx="0.000000" qw="1.000000" qz="-0.000000" />
+        <scale x="0.324574" z="0.324574" y="0.243603" />
+        <game >
+          <sensors />
+          <actuators />
+        </game>
+        <entity friction_x="1.0" damping_rot="0.10000000149011612" velocity_min="0.0" mass="1.0" friction_z="1.0" ghost="False" physics_type="STATIC" inertia_tensor="0.4000000059604645" mass_radius="1.0" lock_rot_z="False" name="leaves" velocity_max="0.0" actor="False" damping_trans="0.03999999910593033" lock_trans_y="False" friction_y="1.0" lock_rot_x="False" anisotropic_friction="False" lock_trans_x="False" lock_rot_y="False" meshFile="leaves.mesh" lock_trans_z="False" />
+      </node>
+    </node>
+    <node name="Area" >
+      <position x="2.023208" z="-7.721866" y="4.272080" />
+      <rotation qy="0.000000" qx="0.000000" qw="1.000000" qz="-0.000000" />
+      <scale x="1.000000" z="1.000000" y="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+    </node>
+    <node name="Lamp" >
+      <position x="-2.427786" z="-11.515551" y="9.697794" />
+      <rotation qy="0.257865" qx="-0.031193" qw="0.757769" qz="0.598597" />
+      <scale x="1.000000" z="1.000000" y="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <light powerScale="1.0" shadow="true" name="Lamp" type="directional" >
+        <position x="-2.427786" z="-11.515551" y="9.697794" />
+        <lightAttenuation linear="0.03333335240683057" range="5000" constant="1.0" quadratic="0.0" />
+        <direction x="0.013" z="-0.68" y="-0.733" />
+        <colourDiffuse g="0.9179584980010986" r="1.0" b="0.5130306482315063" />
+        <colourSpecular g="0.9179584980010986" r="1.0" b="0.5130306482315063" />
+        <colourShadow g="0.9179584980010986" r="1.0" b="0.5130306482315063" />
+      </light>
+    </node>
+  </nodes>
+  <externals >
+    <item type="material" >
+      <file name="C:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\TREES\treeMat.material" />
+    </item>
+    <item type="material" >
+      <file name="C:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\TREES\leafMat.material" />
+    </item>
+  </externals>
+  <environment >
+    <colourAmbient g="0.0" r="0.0" b="0.0" />
+    <colourDiffuse g="0.05087608844041824" r="0.05087608844041824" b="0.05087608844041824" />
+    <colourBackground g="0.05087608844041824" r="0.05087608844041824" b="0.05087608844041824" />
+  </environment>
+</scene>

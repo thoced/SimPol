@@ -1,0 +1,11 @@
+Material MyMaterial : Common/MatDefs/Light/Lighting.j3md {
+    MaterialParameters {
+        ParallaxHeight : 0.05
+        DiffuseMap : Repeat Models/TREES/TexturesCom_Leaves0214_1_alphamasked_S.png
+        BackfaceShadows : false
+        Shininess : 1.0
+    }
+    AdditionalRenderState {
+      Blend Alpha
+    }
+}

@@ -39,18 +39,24 @@ import com.jme3.input.event.MouseMotionEvent;
 import com.jme3.input.event.TouchEvent;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
+import com.jme3.math.FastMath;
 import com.jme3.math.Matrix3f;
+import com.jme3.math.Plane;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Ray;
 import com.jme3.math.Transform;
+import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.RenderManager;
+import com.jme3.renderer.queue.RenderQueue.ShadowMode;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Box;
+import com.jme3.scene.shape.Quad;
 import com.jme3.system.AppSettings;
+import com.jme3.water.SimpleWaterProcessor;
 import java.util.List;
 
 import edu.ufl.digitalworlds.j4k.*;
@@ -137,7 +143,7 @@ public class Main extends SimpleApplication implements RawInputListener  {
         geom.setMaterial(mat);*/
       
               /** Load a model. Uses model and texture from jme3-test-data library! */ 
-        sceneModel = (Node)assetManager.loadModel("Scenes/scene02.j3o");
+        sceneModel = (Node)assetManager.loadModel("Scenes/scene03.j3o");
         //sceneModel.setLocalScale(4f);
         
         // creation de la physique
@@ -209,6 +215,8 @@ public class Main extends SimpleApplication implements RawInputListener  {
         this.getStateManager().attach(new TriggerCibleAppState());
         this.getStateManager().attach(new DynamicAppState());
      
+      // Water
+      
       
      
     }

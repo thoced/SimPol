@@ -1,0 +1,65 @@
+<scene previous_export_time="1499797680.9532664" formatVersion="1.0.1" export_time="1499797703.287161" exported_by="Thonon" >
+  <nodes >
+    <node name="rockavelle02" >
+      <position x="0.000000" y="0.000000" z="-0.000000" />
+      <rotation qz="-0.000000" qx="0.000000" qw="1.000000" qy="0.000000" />
+      <scale x="1.000000" y="1.000000" z="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity mass_radius="1.0" velocity_max="0.0" mass="1.0" inertia_tensor="0.4000000059604645" damping_trans="0.03999999910593033" friction_z="1.0" physics_type="STATIC" friction_x="1.0" lock_rot_y="False" damping_rot="0.10000000149011612" actor="False" lock_rot_x="False" anisotropic_friction="False" meshFile="Plane.003.mesh" friction_y="1.0" lock_trans_z="False" lock_trans_x="False" name="Plane.003" lock_trans_y="False" lock_rot_z="False" velocity_min="0.0" ghost="False" />
+    </node>
+    <node name="Area" >
+      <position x="2.023208" y="4.272080" z="-7.721866" />
+      <rotation qz="-0.000000" qx="0.000000" qw="1.000000" qy="0.000000" />
+      <scale x="1.000000" y="1.000000" z="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+    </node>
+    <node name="Lamp" >
+      <position x="-2.427786" y="9.697794" z="-11.515551" />
+      <rotation qz="0.598597" qx="-0.031193" qw="0.757769" qy="0.257865" />
+      <scale x="1.000000" y="1.000000" z="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <light name="Lamp" shadow="true" powerScale="1.0" type="directional" >
+        <position x="-2.427786" y="9.697794" z="-11.515551" />
+        <lightAttenuation quadratic="0.0" linear="0.03333335240683057" constant="1.0" range="5000" />
+        <direction x="0.013" y="-0.733" z="-0.68" />
+        <colourDiffuse b="0.5130306482315063" r="1.0" g="0.9179584980010986" />
+        <colourSpecular b="0.5130306482315063" r="1.0" g="0.9179584980010986" />
+        <colourShadow b="0.5130306482315063" r="1.0" g="0.9179584980010986" />
+      </light>
+    </node>
+    <node name="Camera" >
+      <position x="7.481132" y="5.343665" z="6.507640" />
+      <rotation qz="-0.208704" qx="0.483536" qw="0.780483" qy="0.336872" />
+      <scale x="1.000000" y="1.000000" z="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <camera name="Camera" fov="0.5033799435163735" projectionType="perspective" >
+        <clipping nearPlaneDist="0.10000000149011612" far="100.0" near="0.10000000149011612" farPlaneDist="100.0" />
+      </camera>
+    </node>
+  </nodes>
+  <externals >
+    <item type="material" >
+      <file name="C:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\ROCKLEVEL\rockMat.material" />
+    </item>
+    <item type="material" >
+      <file name="C:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\ROCKLEVEL\sandMat.material" />
+    </item>
+  </externals>
+  <environment >
+    <colourAmbient b="0.0" r="0.0" g="0.0" />
+    <colourDiffuse b="0.05087608844041824" r="0.05087608844041824" g="0.05087608844041824" />
+    <colourBackground b="0.05087608844041824" r="0.05087608844041824" g="0.05087608844041824" />
+  </environment>
+</scene>

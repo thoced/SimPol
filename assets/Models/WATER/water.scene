@@ -1,0 +1,50 @@
+<scene formatVersion="1.0.1" exported_by="Thonon" export_time="1499761776.8824065" previous_export_time="1499760738.972574" >
+  <nodes >
+    <node name="Cube" >
+      <position z="-13.367779" x="3.060688" y="1.205836" />
+      <rotation qz="-0.000000" qy="0.000000" qw="1.000000" qx="0.000000" />
+      <scale z="1.000000" x="1.000000" y="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity lock_rot_x="False" actor="False" name="Cube" damping_trans="0.03999999910593033" inertia_tensor="0.4000000059604645" mass="1.0" lock_trans_y="False" lock_trans_z="False" friction_x="1.0" velocity_max="0.0" lock_rot_y="False" friction_y="1.0" velocity_min="0.0" anisotropic_friction="False" lock_trans_x="False" damping_rot="0.10000000149011612" mass_radius="1.0" friction_z="1.0" ghost="False" lock_rot_z="False" physics_type="STATIC" meshFile="Cube.mesh" />
+    </node>
+    <node name="Area" >
+      <position z="-7.721866" x="2.023208" y="4.272080" />
+      <rotation qz="-0.000000" qy="0.000000" qw="1.000000" qx="0.000000" />
+      <scale z="1.000000" x="1.000000" y="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+    </node>
+    <node name="Lamp" >
+      <position z="-11.515551" x="-2.427786" y="9.697794" />
+      <rotation qz="0.598597" qy="0.257865" qw="0.757769" qx="-0.031193" />
+      <scale z="1.000000" x="1.000000" y="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <light name="Lamp" powerScale="0.5900000333786011" type="directional" shadow="true" >
+        <position z="-11.515551" x="-2.427786" y="9.697794" />
+        <lightAttenuation constant="1.0" range="5000" linear="0.03333335240683057" quadratic="0.0" />
+        <direction z="-0.68" x="0.013" y="-0.733" />
+        <colourDiffuse r="1.0" g="0.9179584980010986" b="0.5130306482315063" />
+        <colourSpecular r="1.0" g="0.9179584980010986" b="0.5130306482315063" />
+        <colourShadow r="1.0" g="0.9179584980010986" b="0.5130306482315063" />
+      </light>
+    </node>
+  </nodes>
+  <externals >
+    <item type="material" >
+      <file name="C:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\WATER\waterMat.material" />
+    </item>
+  </externals>
+  <environment >
+    <colourBackground r="0.05087608844041824" g="0.05087608844041824" b="0.05087608844041824" />
+    <colourAmbient r="0.0" g="0.0" b="0.0" />
+    <colourDiffuse r="0.05087608844041824" g="0.05087608844041824" b="0.05087608844041824" />
+  </environment>
+</scene>

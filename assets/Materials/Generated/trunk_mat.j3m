@@ -1,0 +1,12 @@
+Material MyMaterial : Common/MatDefs/Light/Lighting.j3md {
+    MaterialParameters {
+        ParallaxHeight : 0.05
+        DiffuseMap : Repeat Models/TREES/TexturesCom_BarkDecidious0194_1_seamless_S.jpg
+        BackfaceShadows : false
+        Shininess : 1.0
+        LightMap : Models/TREES/lightmapTreeAtlas.png
+        SeparateTexCoord : true
+    }
+    AdditionalRenderState {
+    }
+}

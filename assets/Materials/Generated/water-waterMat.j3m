@@ -1,0 +1,21 @@
+Material MyMaterial : Common/MatDefs/Water/SimpleWater.j3md {
+    MaterialParameters {
+        waterDepth : 0.6
+        water_reflection : Repeat Models/WATER/canape_normal.jpg
+        water_refraction : Repeat Models/WATER/canape_normal.jpg
+        water_depthmap : Repeat Models/WATER/canape_normal.jpg
+        water_normalmap : Repeat Models/WATER/canape_normal.jpg
+        water_dudvmap : Repeat Models/WATER/canape_normal.jpg
+    }
+    AdditionalRenderState {
+      PointSprite On
+      FaceCull Back
+      AlphaTestFalloff 0.0
+      DepthWrite On
+      ColorWrite On
+      PolyOffset 0.0 0.0
+      DepthTest On
+      Blend Off
+      Wireframe Off
+    }
+}
