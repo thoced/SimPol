@@ -101,6 +101,12 @@ public class Main extends SimpleApplication implements RawInputListener  {
   // capsule shae
   CapsuleCollisionShape capsuleDebout;
   CapsuleCollisionShape capsuleAccroupi;
+  // Standing
+  private boolean standing = true;
+  private Vector3f offsetSquat = new Vector3f(0,1,0);
+  private Vector3f offsetStanding = new Vector3f(0,2,0);
+  private Vector3f offsetState = offsetStanding.clone();
+  private float    speedStanding = 12f;
   
   // NavMesh
   private NavMesh navMesh;
@@ -132,11 +138,9 @@ public class Main extends SimpleApplication implements RawInputListener  {
         
        
         
-        this.setUpJoys();
+      //  this.setUpJoys();
         this.setUpKeys();
-        
-       
-       
+        // 
 
       /*  Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
         mat.setColor("Color", ColorRGBA.Blue);
@@ -199,7 +203,7 @@ public class Main extends SimpleApplication implements RawInputListener  {
         player.setGravity(new Vector3f(0,-100,0));
         
         playerNode = new Node();
-        playerNode.setLocalTranslation(0, 4, -5);
+        playerNode.setLocalTranslation(0, 4, -0);
         playerNode.addControl(player);
         bulletAppState.getPhysicsSpace().add(player);
         bulletAppState.getPhysicsSpace().add(playerNode);
@@ -242,7 +246,15 @@ public class Main extends SimpleApplication implements RawInputListener  {
         
         // mise à jour de la positino de la camera
         //cam.setLocation(player.getPhysicsLocation().add(new Vector3f(0,0.7f,0)));
-        cam.setLocation(playerNode.getLocalTranslation().add(new Vector3f(0,2f,0)));
+        if(standing)
+        {
+            offsetState.interpolateLocal(offsetStanding, tpf * speedStanding);
+        }
+        else
+            offsetState.interpolateLocal(offsetSquat, tpf * speedStanding);
+        
+         cam.setLocation(playerNode.getLocalTranslation().add(offsetState));
+        
         // mise à jour de la direction de la caméra
         Quaternion q = cam.getRotation();
         QuatCam.fromAngles(LOOKX,LOOKY, 0f);
@@ -257,6 +269,26 @@ public class Main extends SimpleApplication implements RawInputListener  {
      
         
     }
+   
+
+    /**
+     * Get the value of standing
+     *
+     * @return the value of standing
+     */
+    public boolean isStanding() {
+        return standing;
+    }
+
+    /**
+     * Set the value of standing
+     *
+     * @param standing new value of standing
+     */
+    public void setStanding(boolean standing) {
+        this.standing = standing;
+    }
+
     
     /* @Override
     public void simpleUpdate(float tpf) 
@@ -476,20 +508,15 @@ public class Main extends SimpleApplication implements RawInputListener  {
     @Override
     public void onJoyButtonEvent(JoyButtonEvent evt) 
     {
-       if(evt.getButton().getLogicalId() == JoystickButton.BUTTON_0)
+       if(evt.getButton().getLogicalId() == JoystickButton.BUTTON_5)
        {
            if(evt.isPressed())
            {
-            Spatial cible = ((Spatial)this.rootNode.getChild("CIBLE"));
-            if(cible != null)
-            {
-                CibleCtrl ctrl = cible.getControl(CibleCtrl.class);
-                if(ctrl != null)
-                {
-                    ctrl.setType(CibleCtrl.Type.POSITIVE);
-                }
-            }
+               // se mettre à croupi
+               standing = false;
            }
+           else
+              standing = true;
            
        }
        
