@@ -61,6 +61,7 @@ import java.util.List;
 
 import edu.ufl.digitalworlds.j4k.*;
 import mygame.AppStates.DynamicAppState;
+import mygame.AppStates.MovementAppState;
 import mygame.AppStates.TriggerCibleAppState;
 import mygame.Ctrl.CibleCtrl;
 
@@ -71,7 +72,7 @@ import mygame.Ctrl.CibleCtrl;
  * Move your Logic into AppStates or Controls
  * @author normenhansen
  */
-public class Main extends SimpleApplication implements RawInputListener  {
+public class Main extends SimpleApplication  {
 
   private BulletAppState bulletAppState;
   private RigidBodyControl landscape;
@@ -135,12 +136,7 @@ public class Main extends SimpleApplication implements RawInputListener  {
         getFlyByCamera().setEnabled(false);
         this.getFlyByCamera().setMoveSpeed(6f);
         this.getFlyByCamera().setRotationSpeed(0.8f);
-        
-       
-        
-      //  this.setUpJoys();
-        this.setUpKeys();
-        // 
+       // 
 
       /*  Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
         mat.setColor("Color", ColorRGBA.Blue);
@@ -189,33 +185,13 @@ public class Main extends SimpleApplication implements RawInputListener  {
         // physique du personnage
         capsuleDebout = new CapsuleCollisionShape(1f, 1.8f, 1);
         capsuleAccroupi = new CapsuleCollisionShape(1.5f,3f,1);
-        
-       /* player = new CharacterControl(capsuleDebout, 0.05f);
-        player.setJumpSpeed(28);
-        player.setFallSpeed(30);
-        player.setGravity(30);
-        player.setPhysicsLocation(new Vector3f(-0,5, 1));
-        player.setApplyPhysicsLocal(false);
-        player.setCollisionGroup(1);*/
-        
-        player =  new BetterCharacterControl(1f,2f,1f);
-        player.setJumpForce(new Vector3f(0,28,0));
-        player.setGravity(new Vector3f(0,-100,0));
-        
-        playerNode = new Node();
-        playerNode.setLocalTranslation(0, 4, -0);
-        playerNode.addControl(player);
-        bulletAppState.getPhysicsSpace().add(player);
-        bulletAppState.getPhysicsSpace().add(playerNode);
-       
-       
-        
-        
+             
         // ajout du sceneModel
         this.rootNode.attachChild(sceneModel);
       //  bulletAppState.getPhysicsSpace().add(player);
         
         // création des appState
+        this.getStateManager().attach(new MovementAppState());
         this.getStateManager().attach(new TriggerCibleAppState());
         this.getStateManager().attach(new DynamicAppState());
      
@@ -229,65 +205,13 @@ public class Main extends SimpleApplication implements RawInputListener  {
     public void simpleUpdate(float tpf) 
     {
       
-        // calcul des axes de la caméra
-        camDir.set(cam.getDirection()).multLocal(POVY*4);
-        camLeft.set(cam.getLeft()).multLocal(POVX*4);
-        walkDirection.set(0, 0, 0);
-        camAxe.set(0,0,0);
-        
-        camDir.y = 0;
-        // mise à jour du vecgteur walkDirection
-        walkDirection.addLocal(camLeft);
-        walkDirection.addLocal(camDir);
-         // modif axes
-        
-        // update du walkDirection
-        player.setWalkDirection(walkDirection);
-        
-        // mise à jour de la positino de la camera
-        //cam.setLocation(player.getPhysicsLocation().add(new Vector3f(0,0.7f,0)));
-        if(standing)
-        {
-            offsetState.interpolateLocal(offsetStanding, tpf * speedStanding);
-        }
-        else
-            offsetState.interpolateLocal(offsetSquat, tpf * speedStanding);
-        
-         cam.setLocation(playerNode.getLocalTranslation().add(offsetState));
-        
-        // mise à jour de la direction de la caméra
-        Quaternion q = cam.getRotation();
-        QuatCam.fromAngles(LOOKX,LOOKY, 0f);
-        q.multLocal(QuatCam);
-        q.lookAt(cam.getDirection(), Vector3f.UNIT_Y);
-        cam.setRotation(q);
-           
-       // update
-        player.update(tpf);
-        
+         
        
      
         
     }
    
 
-    /**
-     * Get the value of standing
-     *
-     * @return the value of standing
-     */
-    public boolean isStanding() {
-        return standing;
-    }
-
-    /**
-     * Set the value of standing
-     *
-     * @param standing new value of standing
-     */
-    public void setStanding(boolean standing) {
-        this.standing = standing;
-    }
 
     
     /* @Override
@@ -358,36 +282,7 @@ public class Main extends SimpleApplication implements RawInputListener  {
     
    
     
-    private void setUpKeys() 
-    {
-    /*inputManager.addMapping("Left", new KeyTrigger(KeyInput.KEY_Q));
-    inputManager.addMapping("Right", new KeyTrigger(KeyInput.KEY_D));
-    inputManager.addMapping("Up", new KeyTrigger(KeyInput.KEY_Z));
-    inputManager.addMapping("Down", new KeyTrigger(KeyInput.KEY_S));
-    inputManager.addMapping("Jump", new KeyTrigger(KeyInput.KEY_SPACE));
-    inputManager.addMapping("Crounch", new KeyTrigger(KeyInput.KEY_LCONTROL));
-    inputManager.addMapping("Stref_right", new KeyTrigger(KeyInput.KEY_E));
-    inputManager.addMapping("Stref_left", new KeyTrigger(KeyInput.KEY_A));*/
-        
-    inputManager.addRawInputListener(this);
-   
-    // clic
-    //inputManager.addMapping("Clic", new MouseButtonTrigger(MouseInput.BUTTON_LEFT));
     
-   /* inputManager.addListener(this, "Left");
-    inputManager.addListener(this, "Right");
-    inputManager.addListener(this, "Up");
-    inputManager.addListener(this, "Down");
-    inputManager.addListener(this, "Jump");
-    inputManager.addListener(this, "Crounch");
-    inputManager.addListener(this, "Stref_right");
-    inputManager.addListener(this, "Stref_left");*/
-    
-    // listener pour le clic
-   // inputManager.addListener(this, "Clic");
-    
-
-}
 
    /* @Override
     public void onAction(String binding, boolean value, float tpf)
@@ -475,88 +370,5 @@ public class Main extends SimpleApplication implements RawInputListener  {
             }
     }
 
-    @Override
-    public void beginInput() {
-        
-    }
-
-    @Override
-    public void endInput() {
-      
-    }
-
-    @Override
-    public void onJoyAxisEvent(JoyAxisEvent evt) 
-    {
-       JoystickAxis axis = evt.getAxis();
-       if(axis.getLogicalId() == JoystickAxis.X_AXIS)       
-            POVX = (-evt.getValue()) ;
-       
-       if(axis.getLogicalId() == JoystickAxis.Y_AXIS)
-           POVY = (-evt.getValue()) ;
-            
-       if(axis.getLogicalId() == JoystickAxis.Z_AXIS)
-           LOOKY = -evt.getValue() / 8f;
-       
-       if(axis.getLogicalId() == JoystickAxis.Z_ROTATION)
-           LOOKX = evt.getValue() / 8f;
-      
-       
-    }
-
     
-    @Override
-    public void onJoyButtonEvent(JoyButtonEvent evt) 
-    {
-       if(evt.getButton().getLogicalId() == JoystickButton.BUTTON_5)
-       {
-           if(evt.isPressed())
-           {
-               // se mettre à croupi
-               standing = false;
-           }
-           else
-              standing = true;
-           
-       }
-       
-       if(evt.getButton().getLogicalId() == JoystickButton.BUTTON_1)
-       {
-           if(evt.isPressed())
-           {
-            Spatial cible = ((Spatial)this.rootNode.getChild("CIBLE"));
-            if(cible != null)
-            {
-                CibleCtrl ctrl = cible.getControl(CibleCtrl.class);
-                if(ctrl != null)
-                {
-                    ctrl.setType(CibleCtrl.Type.NEGATIVE);
-                }
-            }
-           }
-           
-       }
-  
-     System.out.println(evt.getButton().getLogicalId());
-    }
-
-    @Override
-    public void onMouseMotionEvent(MouseMotionEvent evt) {
-       
-    }
-
-    @Override
-    public void onMouseButtonEvent(MouseButtonEvent evt) {
-       
-    }
-
-    @Override
-    public void onKeyEvent(KeyInputEvent evt) {
-       
-    }
-
-    @Override
-    public void onTouchEvent(TouchEvent evt) {
-       
-    }
 }
