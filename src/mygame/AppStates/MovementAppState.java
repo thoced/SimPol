@@ -62,6 +62,13 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
   private Vector3f offsetState = offsetStanding.clone();
   private float    speedStanding = 12f;
   
+  // Shift (pencher la tête)
+  private Vector3f offsetStateHead = new Vector3f();
+  private Vector3f offsetLeftHead;
+  private Vector3f offsetRightHead;
+  private int     posHead = 0; // -1 : left  +1 : right   0 = centre
+  
+  
   // betterplayer
   private BetterCharacterControl player;
   private Node                   playerNode;
@@ -122,8 +129,24 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
         else
             offsetState.interpolateLocal(offsetSquat, tpf * speedStanding);
         
+        // Systeme de tête penchée
+        switch(posHead)
+        {
+            case -1 : offsetStateHead.interpolateLocal(offsetLeftHead, tpf * speedStanding);
+            break;
+            
+            case 1: offsetStateHead.interpolateLocal(offsetRightHead, tpf * speedStanding);
+            break;
+            
+            case 0: offsetStateHead.interpolateLocal(Vector3f.ZERO, tpf * speedStanding);
+            break;
+        }
+        
         // mise à jour de la location de la caméra
-         cam.setLocation(playerNode.getLocalTranslation().add(offsetState));
+         cam.setLocation(playerNode.getLocalTranslation().add(offsetState).add(offsetStateHead));
+      
+         
+       
         
         // mise à jour de la direction de la caméra
         Quaternion q = cam.getRotation();
@@ -188,6 +211,33 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
            else
               standing = true;
            
+       }
+       
+       // Pencher la tête
+       if(evt.getButton().getLogicalId() == JoystickButton.BUTTON_7)
+       {
+           if(evt.isPressed())
+           {
+               offsetRightHead = cam.getLeft().negate();
+               posHead = 1;
+              
+           }
+           else
+               posHead = 0;
+         
+       }
+       
+       if(evt.getButton().getLogicalId() == JoystickButton.BUTTON_6)
+       {
+           if(evt.isPressed())
+           {
+               offsetLeftHead = cam.getLeft();
+               posHead = -1;
+              
+           }
+           else
+               posHead = 0;
+         
        }
       
         
