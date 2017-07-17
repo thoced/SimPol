@@ -25,8 +25,7 @@ import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import com.jme3.scene.Node;
-import com.jme3.scene.Spatial;
-import mygame.Ctrl.CibleCtrl;
+import com.jme3.water.WaterFilter;
 
 /**
  *
@@ -59,7 +58,7 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
   // Standing
   private boolean standing = true;
   private Vector3f offsetSquat = new Vector3f(0,1,0);
-  private Vector3f offsetStanding = new Vector3f(0,2,0);
+  private Vector3f offsetStanding = new Vector3f(0,2.3f,0);
   private Vector3f offsetState = offsetStanding.clone();
   private float    speedStanding = 12f;
   
@@ -70,6 +69,8 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
   private Camera cam;
   private BulletAppState bulletAppState;
     
+  WaterFilter water;
+  
     @Override
     public void initialize(AppStateManager stateManager, Application app)
     {
@@ -91,6 +92,9 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
         // input
         app.getInputManager().addRawInputListener(this);
         
+         
+        
+        
     }
     
     @Override
@@ -101,8 +105,8 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
         camLeft.set(cam.getLeft()).multLocal(POVX*4);
         walkDirection.set(0, 0, 0);
         camAxe.set(0,0,0);
-        
         camDir.y = 0;
+        
         // mise à jour du vecgteur walkDirection
         walkDirection.addLocal(camLeft);
         walkDirection.addLocal(camDir);
@@ -130,7 +134,8 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
            
        // update
         player.update(tpf);
-    }
+        
+      }
     
     @Override
     public void cleanup() {

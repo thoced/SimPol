@@ -37,6 +37,7 @@ import com.jme3.input.event.KeyInputEvent;
 import com.jme3.input.event.MouseButtonEvent;
 import com.jme3.input.event.MouseMotionEvent;
 import com.jme3.input.event.TouchEvent;
+import com.jme3.light.DirectionalLight;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.FastMath;
@@ -47,6 +48,8 @@ import com.jme3.math.Ray;
 import com.jme3.math.Transform;
 import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
+import com.jme3.post.FilterPostProcessor;
+import com.jme3.post.ssao.SSAOFilter;
 import com.jme3.renderer.RenderManager;
 import com.jme3.renderer.queue.RenderQueue.ShadowMode;
 import com.jme3.scene.Geometry;
@@ -55,6 +58,8 @@ import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Box;
 import com.jme3.scene.shape.Quad;
+import com.jme3.shadow.DirectionalLightShadowFilter;
+import com.jme3.shadow.DirectionalLightShadowRenderer;
 import com.jme3.system.AppSettings;
 import com.jme3.water.SimpleWaterProcessor;
 import java.util.List;
@@ -188,6 +193,7 @@ public class Main extends SimpleApplication  {
              
         // ajout du sceneModel
         this.rootNode.attachChild(sceneModel);
+        
       //  bulletAppState.getPhysicsSpace().add(player);
         
         // création des appState
@@ -197,71 +203,25 @@ public class Main extends SimpleApplication  {
      
       // Water
       
-      
-     
+    
     }
 
     @Override
-    public void simpleUpdate(float tpf) 
-    {
+    public void simpleUpdate(float tpf) {
       
          
        
-     
-        
     }
    
 
 
-    
-    /* @Override
-    public void simpleUpdate(float tpf) 
-    {
-        camDir.set(cam.getDirection()).multLocal(0.2f);
-        camLeft.set(cam.getLeft()).multLocal(POVXLeft);
-        walkDirection.set(0, 0, 0);
-        camAxe.set(0,0,0);
-        
-        if (left) {
-            walkDirection.addLocal(camLeft);
-        }
-        if (right) {
-            walkDirection.addLocal(camLeft.negate());
-        }
-        if (up) {
-            walkDirection.addLocal(camDir);
-        }
-        if (down) {
-            walkDirection.addLocal(camDir.negate());
-        }
-        if(sLeft)
-        {
-             camAxe.addLocal(camLeft.mult(6f));
-        }
-        if(sRight)
-        {
-            camAxe.addLocal(camLeft.mult(6f).negate());
-        }
-        
-         // modif axes
-        
-        
-        player.setWalkDirection(walkDirection);
-        cam.setLocation(player.getPhysicsLocation().add(camAxe));
-        player.update(tpf);
-        
-       
-     
-        
-    }*/
 
     @Override
     public void simpleRender(RenderManager rm) {
         //TODO: add render code
     }
     
-    private void setNavMesh(Node scene)
-    {
+    private void setNavMesh(Node scene){
         // récupération du mesh
         Spatial geo = scene.getChild("chemin");
         if(geo != null)
@@ -280,84 +240,6 @@ public class Main extends SimpleApplication  {
         }
     }
     
-   
-    
-    
-
-   /* @Override
-    public void onAction(String binding, boolean value, float tpf)
-    {
-          System.out.println(binding);
-        
-        if(binding.equals("JOYLEFT"))
-        {
-            System.out.println("LEFFFF ACTION");
-        }
-        
-        if (binding.equals("Left")) 
-        {
-      if (value) { left = true; } else { left = false; }
-    } else if (binding.equals("Right")) {
-      if (value) { right = true; } else { right = false; }
-    } else if (binding.equals("Up")) {
-      if (value) { up = true; } else { up = false; }
-    } else if (binding.equals("Down")) {
-      if (value) { down = true; } else { down = false; }
-    } else if (binding.equals("Jump") && value) {
-      player.jump();
-      
-    }
-    else if(binding.equals("Crounch") && !isCrounch)
-    {
-       //player.setPhysicsLocation(player.getPhysicsLocation().subtract(new Vector3f(0,10,0)));
-      // player.getCollisionShape().setScale(new Vector3f(1,0.5f,1));
-        
-       player.setCollisionShape(capsuleAccroupi);
-     
-       isCrounch = !isCrounch;
-    }
-    else 
-        if(binding.equals("Stref_left"))
-    {
-         if (value)
-             sLeft = true;
-         else
-             sLeft = false;
-    }
-    else
-        if(binding.equals("Stref_right"))
-        {
-            if(value)
-                sRight = true;
-            else
-                sRight = false;
-        }
-        
-    // clic
-    if(binding.equals("Clic"))
-    {
-         CollisionResults results = new CollisionResults();
-         
-          Ray ray = new Ray(cam.getLocation(), cam.getDirection());
-          
-          sceneModel.collideWith(ray, results);
-          
-          if(results.size() > 0)
-          {
-              System.out.println("collision !!");
-              agent.goTo(results.getClosestCollision().getContactPoint());
-          }
-          else
-              System.out.println("No collision");
-         
-    }
-        
-        
-        
-    }*/
-
-  
-
     private void setUpJoys() 
     {
         Joystick[] joysticks = inputManager.getJoysticks();
