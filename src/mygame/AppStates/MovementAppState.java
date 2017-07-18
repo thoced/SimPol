@@ -20,6 +20,7 @@ import com.jme3.input.event.KeyInputEvent;
 import com.jme3.input.event.MouseButtonEvent;
 import com.jme3.input.event.MouseMotionEvent;
 import com.jme3.input.event.TouchEvent;
+import com.jme3.math.FastMath;
 import com.jme3.math.Matrix3f;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
@@ -63,10 +64,14 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
   private float    speedStanding = 12f;
   
   // Shift (pencher la tête)
-  private Vector3f offsetStateHead = new Vector3f();
+  private final Vector3f offsetStateHead = new Vector3f();
   private Vector3f offsetLeftHead;
   private Vector3f offsetRightHead;
   private int     posHead = 0; // -1 : left  +1 : right   0 = centre
+  private  float   angleLean = 0f; // lean
+  private float angleLeanMaxRight = -0.8f;
+  private float angleLeanMaxLeft = 0.8f;
+  private float speedLeanHead = 4f;
   
   
   // betterplayer
@@ -90,7 +95,9 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
         player.setJumpForce(new Vector3f(0,28,0));
         player.setGravity(new Vector3f(0,-100,0));
         
+        
         playerNode = new Node();
+    
         playerNode.setLocalTranslation(0, 4, -0);
         playerNode.addControl(player);
         bulletAppState.getPhysicsSpace().add(player);
@@ -113,11 +120,12 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
         walkDirection.set(0, 0, 0);
         camAxe.set(0,0,0);
         camDir.y = 0;
+        camLeft.y =0;
         
         // mise à jour du vecgteur walkDirection
         walkDirection.addLocal(camLeft);
         walkDirection.addLocal(camDir);
-         // modif axes
+               // modif axes
         
         // update du walkDirection
         player.setWalkDirection(walkDirection);
@@ -132,28 +140,36 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
         // Systeme de tête penchée
         switch(posHead)
         {
-            case -1 : offsetStateHead.interpolateLocal(offsetLeftHead, tpf * speedStanding);
-            break;
+            case -1 : offsetStateHead.interpolateLocal(offsetLeftHead, tpf * speedLeanHead);
+                      angleLean = FastMath.interpolateLinear(tpf * speedLeanHead, angleLean, angleLeanMaxLeft);
+                      break;
             
-            case 1: offsetStateHead.interpolateLocal(offsetRightHead, tpf * speedStanding);
-            break;
+            case 1: offsetStateHead.interpolateLocal(offsetRightHead, tpf * speedLeanHead);
+                    angleLean = FastMath.interpolateLinear(tpf * speedLeanHead, angleLean, angleLeanMaxRight);
+                    break;
             
-            case 0: offsetStateHead.interpolateLocal(Vector3f.ZERO, tpf * speedStanding);
-            break;
+            case 0: offsetStateHead.interpolateLocal(Vector3f.ZERO, tpf * speedLeanHead);
+                    angleLean = FastMath.interpolateLinear(tpf * speedLeanHead, angleLean, 0f);
+                    break;
         }
         
         // mise à jour de la location de la caméra
          cam.setLocation(playerNode.getLocalTranslation().add(offsetState).add(offsetStateHead));
+        // cam.setRotation(playerNode.getWorldTransform().getRotation());
       
-         
-       
-        
+           
         // mise à jour de la direction de la caméra
-        Quaternion q = cam.getRotation();
-        QuatCam.fromAngles(LOOKX,LOOKY, 0f);
-        q.multLocal(QuatCam);
-        q.lookAt(cam.getDirection(), Vector3f.UNIT_Y);
-        cam.setRotation(q);
+        Quaternion currentRot = cam.getRotation();
+        QuatCam.loadIdentity();
+        QuatCam.fromAngles(LOOKX,LOOKY, 0);
+        
+        //QuatCam.multLocal(qLean);       
+        currentRot.multLocal(QuatCam);
+
+     
+       // QuatCam.lookAt(cam.getDirection(), Vector3f.UNIT_Y);
+       // cam.setRotation(QuatCam);
+       currentRot.lookAt(cam.getDirection(), Vector3f.UNIT_Y);
            
        // update
         player.update(tpf);
