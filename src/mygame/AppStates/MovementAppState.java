@@ -83,11 +83,14 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
         player.setJumpForce(new Vector3f(0,28,0));
         player.setGravity(new Vector3f(0,-100,0));
         
+        
         playerNode = new Node();
-        playerNode.setLocalTranslation(0, 4, -0);
+        playerNode.setLocalTranslation(27.16068f, 4, -31.609413f);
         playerNode.addControl(player);
         bulletAppState.getPhysicsSpace().add(player);
         bulletAppState.getPhysicsSpace().add(playerNode);
+        
+        
         
         // input
         app.getInputManager().addRawInputListener(this);
@@ -133,8 +136,7 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
         cam.setRotation(q);
            
        // update
-        player.update(tpf);
-        
+player.update(tpf);
       }
     
     @Override
