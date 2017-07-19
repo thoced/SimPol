@@ -47,23 +47,39 @@ public class CibleCtrl extends AbstractControl {
     {
         
         this.type = type;
+        
+        //si le type est null, on reset le postart et posend
+        if(this.type == Type.NULL)
+        {
+            posStart = this.getSpatial().getLocalTranslation().clone();
+            currentPos = posStart.clone();
+        }
 
     }
-
+    
+ 
     @Override
     public void setSpatial(Spatial spatial) 
     {
         super.setSpatial(spatial); 
+        
         if(spatial != null)
         {
-        
-        posStart = spatial.getLocalTranslation().clone();
-        currentPos = posStart.clone();
-        
-        posEnd = posStart.add(vectorArmed);
-        
-        System.out.println("JE SUIS DEDANS");
+         posStart = this.getSpatial().getLocalTranslation().clone();
+         posEnd = this.getSpatial().getLocalTranslation().clone();
+         currentPos = posStart.clone();
         }
+       
+    }
+    
+    public String getNameSpatial()
+    {
+        return this.getSpatial().getName();
+    }
+    
+    public void setNameSpatial(String name)
+    {
+        this.getSpatial().setName(name);
     }
 
     public Vector3f getPosStart() {
@@ -182,15 +198,13 @@ public class CibleCtrl extends AbstractControl {
         this.setSpeed(in.readFloat("speed", 1f));
         Vector3f temp = new Vector3f();
         this.setVectorArmed((Vector3f)in.readSavable("VECTOR", new Vector3f(0,0,0f)));
-        this.setPosStart((Vector3f)in.readSavable("POSSTART", new Vector3f(0,0,0)));
-        this.setPosEnd((Vector3f)in.readSavable("POSEND", new Vector3f(0,0,0)));
+        this.setPosStart((Vector3f)in.readSavable("POSSTART", this.getSpatial().getWorldTranslation()));
+        this.setPosEnd((Vector3f)in.readSavable("POSEND", this.getSpatial().getWorldTranslation()));
         this.setCurrentPos((Vector3f)in.readSavable("POSCURRENT", new Vector3f(0,0,0)));
         this.setType(in.readEnum("type", Type.class, Type.NULL));
         this.setOneShot(in.readBoolean("oneshot", false));
-        
-         posStart = this.getSpatial().getLocalTranslation().clone();
-        currentPos = posStart.clone();
-        posEnd = posStart.add(vectorArmed);
+      
+
         
        // this.setVectorArmed(temp);
         //TODO: load properties of this Control, e.g.
