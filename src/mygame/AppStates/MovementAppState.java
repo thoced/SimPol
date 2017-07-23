@@ -48,7 +48,8 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
   float LOOKX = 0.0f;
   float LOOKZ = 0.0f; // pour pencher la tête
   
-  private Quaternion QuatCam = new Quaternion();
+  private Quaternion quatCam = new Quaternion();
+  private Quaternion quatLean = new Quaternion();
   private Matrix3f MatCam = new Matrix3f(); 
    
   private Vector3f lookAt = new Vector3f();
@@ -162,20 +163,20 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
         
         // Quaternion de rotation de la caméra sur base des mouvements du gamepad
         Quaternion currentRot = cam.getRotation();
-        QuatCam.loadIdentity();
-        QuatCam.fromAngles(LOOKX,LOOKY, 0);
+        quatCam.loadIdentity();
+        quatCam.fromAngles(LOOKX,LOOKY, 0);
         
 
         // multiplication des quaternions
-        currentRot.multLocal(QuatCam);
-        Vector3f[] axis = new Vector3f[3];
-        
+        currentRot.multLocal(quatCam);
+      
         // creation du leanVecteur
-        Quaternion quatLean = new Quaternion();
         quatLean.fromAngleAxis(angleLean,cam.getDirection());
         Vector3f leanVec = quatLean.mult(Vector3f.UNIT_Y);
         
-       /* currentRot.toAxes(axis);
+       /* 
+          Vector3f[] axis = new Vector3f[3];
+        currentRot.toAxes(axis);
         Vector3f XX = leanVec.cross(axis[2]);
         Vector3f YY = axis[2].cross(XX);
         currentRot.fromAxes(XX,YY,axis[2]);*/
