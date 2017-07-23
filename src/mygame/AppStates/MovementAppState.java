@@ -69,8 +69,8 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
   private Vector3f offsetRightHead;
   private int     posHead = 0; // -1 : left  +1 : right   0 = centre
   private  float   angleLean = 0f; // lean
-  private float angleLeanMaxRight = -0.8f;
-  private float angleLeanMaxLeft = 0.8f;
+  private float angleLeanMaxRight = 0.55f;
+  private float angleLeanMaxLeft = -0.55f;
   private float speedLeanHead = 4f;
   
   
@@ -93,11 +93,11 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
         // physique player
         player =  new BetterCharacterControl(1f,2f,1f);
         player.setJumpForce(new Vector3f(0,28,0));
-        player.setGravity(new Vector3f(0,-100,0));
+        player.setGravity(new Vector3f(0,-1,0));
         
         
         playerNode = new Node();
-        playerNode.setLocalTranslation(27.16068f, 4, -31.609413f);
+        playerNode.setLocalTranslation(27.16068f, 8, -31.609413f);
         playerNode.addControl(player);
         bulletAppState.getPhysicsSpace().add(player);
        // bulletAppState.getPhysicsSpace().add(playerNode);
@@ -160,41 +160,27 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
         // cam.setRotation(playerNode.getWorldTransform().getRotation());
       
         
+        // Quaternion de rotation de la caméra sur base des mouvements du gamepad
         Quaternion currentRot = cam.getRotation();
         QuatCam.loadIdentity();
         QuatCam.fromAngles(LOOKX,LOOKY, 0);
         
-      
-        // multiplicatino du quaternion
+
+        // multiplication des quaternions
         currentRot.multLocal(QuatCam);
         Vector3f[] axis = new Vector3f[3];
-        currentRot.toAxes(axis);
-       
-        Vector3f XX = Vector3f.UNIT_Y.cross(axis[2]);
+        
+        // creation du leanVecteur
+        Quaternion quatLean = new Quaternion();
+        quatLean.fromAngleAxis(angleLean,cam.getDirection());
+        Vector3f leanVec = quatLean.mult(Vector3f.UNIT_Y);
+        
+       /* currentRot.toAxes(axis);
+        Vector3f XX = leanVec.cross(axis[2]);
         Vector3f YY = axis[2].cross(XX);
+        currentRot.fromAxes(XX,YY,axis[2]);*/
         
-        
-        currentRot.fromAxes(XX,YY,axis[2]);
-        
-        // création du vecteur relatif à pencher de tête
-      
-        
-       // Quaternion quatLean = new Quaternion();
-     //   quatLean.fromAngleAxis(angleLean, Vector3f.UNIT_Z);
-       
-        // test
-        //currentRot.apply(quatLean);
-        
-       
-        // multiplication avec le quatrotation
-        
-        //Vector3f upLean = quatLean.mult(Vector3f.UNIT_Y);
-           
-        
-        //cam.setRotation(currentRot);
-       //currentRot.lookAt(cam.getDirection(), Vector3f.UNIT_Y);
-           
-     
+       currentRot.lookAt(cam.getDirection(), leanVec);
        // update
         player.update(tpf);
       }
