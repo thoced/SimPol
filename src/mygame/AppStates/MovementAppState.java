@@ -100,7 +100,7 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
         playerNode.setLocalTranslation(27.16068f, 4, -31.609413f);
         playerNode.addControl(player);
         bulletAppState.getPhysicsSpace().add(player);
-        bulletAppState.getPhysicsSpace().add(playerNode);
+       // bulletAppState.getPhysicsSpace().add(playerNode);
         
         
         
@@ -159,24 +159,20 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
          cam.setLocation(playerNode.getLocalTranslation().add(offsetState).add(offsetStateHead));
         // cam.setRotation(playerNode.getWorldTransform().getRotation());
       
-       
         
-        // mise à jour de la direction de la caméra
         Quaternion currentRot = cam.getRotation();
         QuatCam.loadIdentity();
         QuatCam.fromAngles(LOOKX,LOOKY, 0);
-    
-               
-        //QuatCam.multLocal(qLean);       
+        // multiplicatino du quaternion
         currentRot.multLocal(QuatCam);
+       
+        //currentRot.addLocal(quatLean);
 
-     
-       // QuatCam.lookAt(cam.getDirection(), Vector3f.UNIT_Y);
-       // cam.setRotation(QuatCam);
+        //cam.setRotation(currentRot);
        currentRot.lookAt(cam.getDirection(), Vector3f.UNIT_Y);
            
        // update
-player.update(tpf);
+        player.update(tpf);
       }
     
     @Override
