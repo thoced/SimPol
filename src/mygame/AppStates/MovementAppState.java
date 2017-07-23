@@ -166,10 +166,22 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
         // multiplicatino du quaternion
         currentRot.multLocal(QuatCam);
        
-        //currentRot.addLocal(quatLean);
-
+        // création du vecteur relatif à pencher de tête
+        Matrix3f quatLean = new Matrix3f();
+       // Quaternion quatLean = new Quaternion();
+        quatLean.fromAngleAxis(angleLean, Vector3f.UNIT_Z);
+       
+        // test
+        //currentRot.apply(quatLean);
+        
+       
+        // multiplication avec le quatrotation
+        
+        //Vector3f upLean = quatLean.mult(Vector3f.UNIT_Y);
+           
+        
         //cam.setRotation(currentRot);
-       currentRot.lookAt(cam.getDirection(), Vector3f.UNIT_Y);
+      // currentRot.lookAt(cam.getDirection(), upLean);
            
        // update
         player.update(tpf);
