@@ -40,19 +40,10 @@ material sandMat
             }
             texture_unit 
             {
-                texture TexturesCom_SoilCracked0157_1_NORMAl.jpg
-                tex_address_mode wrap
-                scale 1.0 1.0
-                tex_coord_set 0
-                colour_op modulate
-            }
-            texture_unit 
-            {
-                texture lightmap.001.png
+                texture lightVallee.png
                 tex_address_mode wrap
                 scale 1.0 1.0
                 tex_coord_set 1
-                colour_op modulate
             }
         }
     }

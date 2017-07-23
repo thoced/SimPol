@@ -9,7 +9,7 @@ Material MyMaterial : Common/MatDefs/Light/Lighting.j3md {
         DiffuseMap : Repeat Models/ROCKLEVEL/TexturesCom_SoilCracked0157_1_seamless_S.jpg
         Specular : 0.5 0.5 0.5 1.0
         Shininess : 12.5
-        LightMap : Models/ROCKLEVEL/lightmap.001.png
+        LightMap : Models/ROCKLEVEL/lightVallee.png
         SteepParallax : false
         SeparateTexCoord : true
         NormalMap : Repeat Models/ROCKLEVEL/TexturesCom_SoilCracked0157_1_NORMAl.jpg
