@@ -117,6 +117,7 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
         
         // update du walkDirection
         player.setWalkDirection(walkDirection);
+        player.setViewDirection(cam.getDirection());
         
         // mise à jour de la positino de la camera
         //cam.setLocation(player.getPhysicsLocation().add(new Vector3f(0,0.7f,0)));
