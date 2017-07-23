@@ -163,13 +163,24 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
         Quaternion currentRot = cam.getRotation();
         QuatCam.loadIdentity();
         QuatCam.fromAngles(LOOKX,LOOKY, 0);
+        
+      
         // multiplicatino du quaternion
         currentRot.multLocal(QuatCam);
+        Vector3f[] axis = new Vector3f[3];
+        currentRot.toAxes(axis);
        
+        Vector3f XX = Vector3f.UNIT_Y.cross(axis[2]);
+        Vector3f YY = axis[2].cross(XX);
+        
+        
+        currentRot.fromAxes(XX,YY,axis[2]);
+        
         // création du vecteur relatif à pencher de tête
-        Matrix3f quatLean = new Matrix3f();
+      
+        
        // Quaternion quatLean = new Quaternion();
-        quatLean.fromAngleAxis(angleLean, Vector3f.UNIT_Z);
+     //   quatLean.fromAngleAxis(angleLean, Vector3f.UNIT_Z);
        
         // test
         //currentRot.apply(quatLean);
@@ -181,8 +192,9 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
            
         
         //cam.setRotation(currentRot);
-      // currentRot.lookAt(cam.getDirection(), upLean);
+       //currentRot.lookAt(cam.getDirection(), Vector3f.UNIT_Y);
            
+     
        // update
         player.update(tpf);
       }
