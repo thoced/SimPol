@@ -98,7 +98,7 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
         
         
         playerNode = new Node();
-        playerNode.setLocalTranslation(27.16068f, 8, -31.609413f);
+        playerNode.setLocalTranslation(18.421011f, 3f, -29.783699f);
         playerNode.addControl(player);
         bulletAppState.getPhysicsSpace().add(player);
        // bulletAppState.getPhysicsSpace().add(playerNode);
@@ -117,8 +117,8 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
     public void update(float tpf) 
     {
         // calcul des axes de la caméra
-        camDir.set(cam.getDirection()).multLocal(POVY*4);
-        camLeft.set(cam.getLeft()).multLocal(POVX*4);
+        camDir.set(cam.getDirection()).multLocal(POVY*3);
+        camLeft.set(cam.getLeft()).multLocal(POVX*3);
         walkDirection.set(0, 0, 0);
         camAxe.set(0,0,0);
         camDir.y = 0;
@@ -215,10 +215,10 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
            POVY = (-evt.getValue()) ;
             
        if(axis.getLogicalId() == JoystickAxis.Z_AXIS)
-           LOOKY = -evt.getValue() / 8f;
+           LOOKY = -evt.getValue() / 128f;
        
        if(axis.getLogicalId() == JoystickAxis.Z_ROTATION)
-           LOOKX = evt.getValue() / 8f;
+           LOOKX = evt.getValue() / 128f;
       
        
     }
