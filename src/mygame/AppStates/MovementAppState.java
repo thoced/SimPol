@@ -218,10 +218,10 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
            POVY = (-evt.getValue()) ;
             
        if(axis.getLogicalId() == JoystickAxis.Z_AXIS)
-           LOOKY = -evt.getValue() / 128f;
+           LOOKY = -evt.getValue() / 64f;
        
        if(axis.getLogicalId() == JoystickAxis.Z_ROTATION)
-           LOOKX = evt.getValue() / 128f;
+           LOOKX = evt.getValue() / 64f;
       
        
     }
