@@ -125,9 +125,9 @@ public class Main extends SimpleApplication  {
     public static void main(String[] args) {
         Main app = new Main();
         
-        //AppSettings settings = new AppSettings(true);
-        //settings.setUseJoysticks(true);
-        //app.setSettings(settings);
+        AppSettings settings = new AppSettings(true);
+        settings.setUseJoysticks(true);
+        app.setSettings(settings);
         app.start();    
         
       

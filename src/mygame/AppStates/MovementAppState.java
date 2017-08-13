@@ -103,11 +103,11 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
         bulletAppState.getPhysicsSpace().add(player);
        // bulletAppState.getPhysicsSpace().add(playerNode);
         
-        
-        
+     
+       
         // input
         app.getInputManager().addRawInputListener(this);
-       
+        
         
          
         
