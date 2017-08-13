@@ -107,6 +107,7 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
         
         // input
         app.getInputManager().addRawInputListener(this);
+       
         
          
         
@@ -207,6 +208,8 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
     @Override
     public void onJoyAxisEvent(JoyAxisEvent evt) 
     {
+        System.out.println("joy");
+        
        JoystickAxis axis = evt.getAxis();
        if(axis.getLogicalId() == JoystickAxis.X_AXIS)       
             POVX = (-evt.getValue()) ;

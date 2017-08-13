@@ -1,0 +1,27 @@
+<scene export_time="1500212134.367808" formatVersion="1.0.1" exported_by="Thonon" previous_export_time="1500211946.0985932" >
+  <nodes >
+    <node name="batiment04" >
+      <position x="-6.858677" y="1.341501" z="-16.170641" />
+      <rotation qz="-0.000000" qw="1.000000" qy="0.000000" qx="0.000000" />
+      <scale x="1.478126" y="1.862050" z="1.406695" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity lock_rot_y="False" inertia_tensor="0.4000000059604645" name="Plane" velocity_min="0.0" lock_rot_x="False" friction_y="1.0" friction_z="1.0" damping_rot="0.10000000149011612" actor="False" damping_trans="0.03999999910593033" mass_radius="1.0" mass="1.0" lock_trans_y="False" friction_x="1.0" lock_trans_z="False" ghost="False" lock_rot_z="False" lock_trans_x="False" physics_type="STATIC" anisotropic_friction="False" meshFile="Plane.mesh" velocity_max="0.0" />
+    </node>
+  </nodes>
+  <externals >
+    <item type="material" >
+      <file name="C:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\BATIMENT04\batiment04Mur.material" />
+    </item>
+    <item type="material" >
+      <file name="C:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\BATIMENT04\batiment04Sol.material" />
+    </item>
+  </externals>
+  <environment >
+    <colourDiffuse r="0.05087608844041824" b="0.05087608844041824" g="0.05087608844041824" />
+    <colourBackground r="0.05087608844041824" b="0.05087608844041824" g="0.05087608844041824" />
+    <colourAmbient r="0.0" b="0.0" g="0.0" />
+  </environment>
+</scene>
