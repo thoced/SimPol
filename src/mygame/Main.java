@@ -148,7 +148,7 @@ public class Main extends SimpleApplication  {
         geom.setMaterial(mat);*/
       
               /** Load a model. Uses model and texture from jme3-test-data library! */ 
-        sceneModel = (Node)assetManager.loadModel("Scenes/scene03.j3o");
+        sceneModel = (Node)assetManager.loadModel("Scenes/sceneTest.j3o");
         //sceneModel.setLocalScale(4f);
         
         // creation de la physique
