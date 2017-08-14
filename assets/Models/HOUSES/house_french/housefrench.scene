@@ -1,0 +1,24 @@
+<scene export_time="1502703983.6606398" formatVersion="1.0.1" exported_by="thonon" previous_export_time="0" >
+  <nodes >
+    <node name="Plane" >
+      <position y="0.000000" z="-0.000000" x="0.000000" />
+      <rotation qy="0.000000" qw="0.707107" qx="0.707107" qz="-0.000000" />
+      <scale y="1.000000" z="1.000000" x="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity inertia_tensor="0.4000000059604645" lock_trans_y="False" friction_y="1.0" ghost="False" lock_trans_z="False" meshFile="Plane.mesh.mesh" damping_trans="0.03999999910593033" mass="1.0" lock_trans_x="False" actor="False" velocity_min="0.0" lock_rot_x="False" friction_x="1.0" velocity_max="0.0" anisotropic_friction="False" name="Plane.mesh" friction_z="1.0" lock_rot_y="False" damping_rot="0.10000000149011612" mass_radius="1.0" lock_rot_z="False" physics_type="STATIC" />
+    </node>
+  </nodes>
+  <externals >
+    <item type="material" >
+      <file name="F:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\HOUSES\house_french\Material.001.material" />
+    </item>
+  </externals>
+  <environment >
+    <colourBackground r="0.05087608844041824" b="0.05087608844041824" g="0.05087608844041824" />
+    <colourAmbient r="0.0" b="0.0" g="0.0" />
+    <colourDiffuse r="0.05087608844041824" b="0.05087608844041824" g="0.05087608844041824" />
+  </environment>
+</scene>

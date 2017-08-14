@@ -1,0 +1,43 @@
+// Stone.004 genrated by blender2ogre 0.6.0
+
+material Stone.004 
+{
+    receive_shadows on 
+
+    technique
+    {
+        pass Stone.004
+        {
+            ambient 0.5753808087913512 0.49631041394195563 0.3318767991191862 1.0
+            diffuse 0.8411999940872192 0.725600004196167 0.4851999878883362 1.0
+            specular 0.5 0.45089998841285706 0.35370001196861267 1.0 50.0
+            emissive 0.0 0.0 0.0 1.0
+
+            alpha_to_coverage off
+            colour_write on
+            cull_hardware clockwise
+            depth_check on
+            depth_func less_equal
+            depth_write on
+            illumination_stage 
+            light_clip_planes off
+            light_scissor off
+            lighting on
+            normalise_normals off
+            polygon_mode solid
+            scene_blend one zero
+            scene_blend_op add
+            shading gouraud
+            transparent_sorting on
+
+            texture_unit 
+            {
+                texture Sheldonian.png
+                tex_address_mode wrap
+                scale 1.0 1.0
+                tex_coord_set 0
+                colour_op modulate
+            }
+        }
+    }
+}

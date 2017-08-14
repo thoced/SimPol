@@ -1,0 +1,76 @@
+<scene export_time="1502704805.5637705" formatVersion="1.0.1" exported_by="thonon" previous_export_time="1502704726.5369432" >
+  <nodes >
+    <node name="UV-mapped" >
+      <position y="16.263643" z="0.374186" x="-1.540389" />
+      <rotation qy="0.000000" qw="0.707107" qx="0.707107" qz="-0.000000" />
+      <scale y="1.000000" z="1.000000" x="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity inertia_tensor="0.4000000059604645" lock_trans_y="False" friction_y="1.0" ghost="False" lock_trans_z="False" meshFile="UV-mapped.mesh.001.mesh" damping_trans="0.03999999910593033" mass="1.0" lock_trans_x="False" actor="False" velocity_min="0.0" lock_rot_x="False" friction_x="1.0" velocity_max="0.0" anisotropic_friction="False" name="UV-mapped.mesh.001" friction_z="1.0" lock_rot_y="False" damping_rot="0.10000000149011612" mass_radius="1.0" lock_rot_z="False" physics_type="STATIC" />
+    </node>
+    <node name="Non-mapped" >
+      <position y="16.263643" z="0.374186" x="-1.540389" />
+      <rotation qy="0.000000" qw="0.707107" qx="0.707107" qz="-0.000000" />
+      <scale y="1.000000" z="1.000000" x="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity inertia_tensor="0.4000000059604645" lock_trans_y="False" friction_y="1.0" ghost="False" lock_trans_z="False" meshFile="Non-mapped.mesh.001.mesh" damping_trans="0.03999999910593033" mass="1.0" lock_trans_x="False" actor="False" velocity_min="0.0" lock_rot_x="False" friction_x="1.0" velocity_max="0.0" anisotropic_friction="False" name="Non-mapped.mesh.001" friction_z="1.0" lock_rot_y="False" damping_rot="0.10000000149011612" mass_radius="1.0" lock_rot_z="False" physics_type="STATIC" />
+    </node>
+  </nodes>
+  <externals >
+    <item type="material" >
+      <file name="F:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\HOUSES\sheldonian\TexBase.001.material" />
+    </item>
+    <item type="material" >
+      <file name="F:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\HOUSES\sheldonian\WindowDark.003.material" />
+    </item>
+    <item type="material" >
+      <file name="F:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\HOUSES\sheldonian\Stone.004.material" />
+    </item>
+    <item type="material" >
+      <file name="F:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\HOUSES\sheldonian\White.001.material" />
+    </item>
+    <item type="material" >
+      <file name="F:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\HOUSES\sheldonian\White.002.material" />
+    </item>
+    <item type="material" >
+      <file name="F:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\HOUSES\sheldonian\Material.006.material" />
+    </item>
+    <item type="material" >
+      <file name="F:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\HOUSES\sheldonian\Roof.001.material" />
+    </item>
+    <item type="material" >
+      <file name="F:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\HOUSES\sheldonian\Stone.002.material" />
+    </item>
+    <item type="material" >
+      <file name="F:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\HOUSES\sheldonian\LanternGlass.001.material" />
+    </item>
+    <item type="material" >
+      <file name="F:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\HOUSES\sheldonian\Material.007.material" />
+    </item>
+    <item type="material" >
+      <file name="F:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\HOUSES\sheldonian\Stone.003.material" />
+    </item>
+    <item type="material" >
+      <file name="F:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\HOUSES\sheldonian\RoofLight.001.material" />
+    </item>
+    <item type="material" >
+      <file name="F:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\HOUSES\sheldonian\Material.008.material" />
+    </item>
+    <item type="material" >
+      <file name="F:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\HOUSES\sheldonian\WindowVeryDark.001.material" />
+    </item>
+    <item type="material" >
+      <file name="F:\Users\Thonon\Documents\JME Apps\SimuPol\assets\Models\HOUSES\sheldonian\WindowDark.002.material" />
+    </item>
+  </externals>
+  <environment >
+    <colourBackground r="0.05087608844041824" b="0.05087608844041824" g="0.05087608844041824" />
+    <colourAmbient r="0.0" b="0.0" g="0.0" />
+    <colourDiffuse r="0.05087608844041824" b="0.05087608844041824" g="0.05087608844041824" />
+  </environment>
+</scene>

@@ -1,0 +1,43 @@
+// WindowDark.003 genrated by blender2ogre 0.6.0
+
+material WindowDark.003 
+{
+    receive_shadows on 
+
+    technique
+    {
+        pass WindowDark.003
+        {
+            ambient 0.1311806377680158 0.18135233680096619 0.1866142569286824 1.0
+            diffuse 0.3215999901294708 0.444599986076355 0.45750001072883606 1.0
+            specular 0.5 0.5 0.5 1.0 50.0
+            emissive 0.0 0.0 0.0 1.0
+
+            alpha_to_coverage off
+            colour_write on
+            cull_hardware clockwise
+            depth_check on
+            depth_func less_equal
+            depth_write on
+            illumination_stage 
+            light_clip_planes off
+            light_scissor off
+            lighting on
+            normalise_normals off
+            polygon_mode solid
+            scene_blend one zero
+            scene_blend_op add
+            shading gouraud
+            transparent_sorting on
+
+            texture_unit 
+            {
+                texture Sheldonian.png
+                tex_address_mode wrap
+                scale 1.0 1.0
+                tex_coord_set 0
+                colour_op modulate
+            }
+        }
+    }
+}
