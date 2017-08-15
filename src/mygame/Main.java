@@ -60,6 +60,7 @@ import com.jme3.scene.shape.Box;
 import com.jme3.scene.shape.Quad;
 import com.jme3.shadow.DirectionalLightShadowFilter;
 import com.jme3.shadow.DirectionalLightShadowRenderer;
+import com.jme3.shadow.EdgeFilteringMode;
 import com.jme3.system.AppSettings;
 import com.jme3.water.SimpleWaterProcessor;
 import java.util.List;
@@ -201,7 +202,8 @@ public class Main extends SimpleApplication  {
         this.getStateManager().attach(new TriggerCibleAppState());
         this.getStateManager().attach(new DynamicAppState());
      
-      // Water
+      // Shadow
+        this.initShadow();
       
     
     }
@@ -213,6 +215,28 @@ public class Main extends SimpleApplication  {
        
     }
    
+    public void initShadow(){
+        /* Drop shadows */
+        final int SHADOWMAP_SIZE=4096;
+      /*  DirectionalLightShadowRenderer dlsr = new DirectionalLightShadowRenderer(assetManager, SHADOWMAP_SIZE, 4);
+        System.out.println(this.getRootNode().getName());
+        dlsr.setLight((DirectionalLight)this.getRootNode().getChild("Scene").getLocalLightList().get(1));
+        dlsr.setShadowIntensity(0.5f);
+        dlsr.setEdgeFilteringMode(EdgeFilteringMode.Nearest);*/
+       // dlsr.setShadowZExtend(100f);
+        
+    
+       // viewPort.addProcessor(dlsr);
+        
+        DirectionalLightShadowFilter dlsf = new DirectionalLightShadowFilter(assetManager, SHADOWMAP_SIZE, 4);
+        dlsf.setLight((DirectionalLight)this.getRootNode().getChild("Scene").getLocalLightList().get(1));
+        dlsf.setEnabled(true);
+        FilterPostProcessor fpp = new FilterPostProcessor(assetManager);
+        fpp.addFilter(dlsf);
+        viewPort.addProcessor(fpp); 
+      
+      
+    }
 
 
 

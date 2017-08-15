@@ -118,8 +118,8 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
     public void update(float tpf) 
     {
         // calcul des axes de la caméra
-        camDir.set(cam.getDirection()).multLocal(POVY*3);
-        camLeft.set(cam.getLeft()).multLocal(POVX*3);
+        camDir.set(cam.getDirection()).multLocal(POVY*12);
+        camLeft.set(cam.getLeft()).multLocal(POVX*12);
         walkDirection.set(0, 0, 0);
         camAxe.set(0,0,0);
         camDir.y = 0;
@@ -165,6 +165,7 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
         // Quaternion de rotation de la caméra sur base des mouvements du gamepad
         Quaternion currentRot = cam.getRotation();
         quatCam.loadIdentity();
+        System.out.println("LOOKX: " + LOOKY );
         quatCam.fromAngles(LOOKX,LOOKY, 0);
         
 
@@ -211,6 +212,7 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
       
         
        JoystickAxis axis = evt.getAxis();
+       
        if(axis.getLogicalId() == JoystickAxis.X_AXIS)       
             POVX = (-evt.getValue()) ;
        
@@ -218,12 +220,12 @@ public class MovementAppState extends AbstractAppState implements RawInputListen
            POVY = (-evt.getValue()) ;
             
        if(axis.getLogicalId() == JoystickAxis.Z_AXIS)
-           LOOKY = -evt.getValue() / 64f;
+           LOOKY = -evt.getValue() / 32f;
        
        if(axis.getLogicalId() == JoystickAxis.Z_ROTATION)
-           LOOKX = evt.getValue() / 64f;
+           LOOKX = evt.getValue() / 32f;
       
-       
+   
     }
 
     
